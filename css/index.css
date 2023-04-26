@@ -1,0 +1,9 @@
+
+@font-face {
+    font-family: darksouls;
+    src: url('../Assets/fonts/optimusprinceps-webfont.woff') format('woff');
+}
+
+*{
+    font-family: darksouls;
+}
