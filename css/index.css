@@ -4,6 +4,18 @@
     src: url('../Assets/fonts/optimusprinceps-webfont.woff') format('woff');
 }
 
-*{
+h1{
     font-family: darksouls;
+}
+
+.home_video{
+    width: 100%;
+    margin-top: -20px;
+}
+
+.navbar {
+    width: 100%;
+    height: 105px;
+    position: fixed;
+    backdrop-filter: blur(150px);
 }
