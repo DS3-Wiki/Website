@@ -4,18 +4,133 @@
     src: url('../Assets/fonts/optimusprinceps-webfont.woff') format('woff');
 }
 
-h1{
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+*{
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    font-family: 'Secular One', sans-serif; 
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #252525;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #9B1F1F;
+}
+
+body{
+    background: #252525;
+}
+
+.navbar {
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.109);
+    width: 100%;
+    z-index: 2;
+    height: 100px;
+    position: fixed;
+    backdrop-filter: blur(130px);
+}
+
+.lista_navbar {
+    margin-top: 30px;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.lista_navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.lista_navbar li :hover{
+    transition: .3s ease;
+    color:#FFBC42;
+}
+
+.home_button a {
+    color: #9B1F1F;
+    display: flex;
+    margin-top: -10px;
     font-family: darksouls;
+    font-size: 60px;
+}
+
+.home_button img {
+    display: flex;
+    width: 130px;
+    position: absolute;
+    padding-left: 95px;
+    margin-top: -30px;
 }
 
 .home_video{
     width: 100%;
-    margin-top: -20px;
+    margin-top: -10px;
 }
 
-.navbar {
+.section_1 {
+    margin-top: 150px;
+}
+
+.div_missao img {
+    position: relative;
+    z-index: -1;
     width: 100%;
-    height: 105px;
-    position: fixed;
-    backdrop-filter: blur(150px);
+    margin-top: -900px;
+}
+
+.missao h1 {
+    z-index: 2;
+    font-size: 80px;
+    padding-left: 50px;
+    color: #FFBC42;
+    letter-spacing: 5px;
+}
+
+.missao p {
+    letter-spacing: 5px;
+    font-size: 50px;
+    margin-top: 60px;
+    padding-left: 100px;
+    font-style: italic;
+    color: #fff;
+}
+
+.missao img {
+    z-index: 2;
+    width: 200px;
+    background-color: #9B1F1F;
+}
+
+.produto {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    align-items: end;
+    margin-top: 120px;
+    padding-right: 100px;
+}
+
+.produto h1 {
+    z-index: 2;
+    font-size: 80px;
+    color: #FFBC42;
+    letter-spacing: 5px;
+}
+
+.produto p {
+    padding-right: 50px;
+    letter-spacing: 5px;
+    font-size: 50px;
+    margin-top: 60px;
+    font-style: italic;
+    color: #fff;
 }
