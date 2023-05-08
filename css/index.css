@@ -13,6 +13,20 @@
     font-family: 'Secular One', sans-serif; 
 }
 
+h1 {
+    font-size: 10vh;
+    color: #FFBC42;
+    letter-spacing: 5px;
+}
+
+p{
+    font-size: 6vh;
+    font-style: italic;
+    color: #f1f1f1;
+    letter-spacing: 5px;
+    margin-top: 50px;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     background-color: #252525;
@@ -25,6 +39,8 @@
 body{
     background: #252525;
 }
+
+/* NAVBAR */
 
 .navbar {
     box-shadow: 0 7px 15px rgba(0, 0, 0, 0.109);
@@ -55,6 +71,8 @@ body{
     color:#FFBC42;
 }
 
+/* HOME-VIDEO */
+
 .home_button a {
     color: #9B1F1F;
     display: flex;
@@ -77,41 +95,66 @@ body{
     pointer-events: none;
 }
 
+/* SECTION 1 */
+
 .section_1 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+}
+
+.section_1_texto h1{
+    padding-left: 50px;
+}
+
+.section_1_texto p {
+    padding-left: 100px
+}
+
+/* SECTION 2 */
+
+.section_2 {
+    display: flex;
+    flex-direction: row-reverse;
     margin-top: 150px;
 }
 
-.div_missao img {
-    position: relative;
-    z-index: -1;
-    width: 100%;
-    margin-top: -900px;
+.section_2_texto h1{
+    padding-right: 50px;
 }
 
-.missao h1 {
-    z-index: 2;
-    font-size: 80px;
+.section_2_texto p {
+    padding-right: 100px
+}
+
+/* SECTION 3 */
+
+.section_3 {
+    display: flex;
+    margin-top: 150px;
+}
+
+.section_3_texto h1{
     padding-left: 50px;
-    color: #FFBC42;
-    letter-spacing: 5px;
 }
 
-.missao p {
-    letter-spacing: 5px;
-    font-size: 50px;
-    margin-top: 60px;
-    padding-left: 100px;
-    font-style: italic;
-    color: #fff;
+.section_3_texto p {
+    padding-left: 100px
 }
 
-.missao img {
-    z-index: 2;
-    width: 200px;
-    background-color: #9B1F1F;
+.section_3 img {
+    width: 300px;
+    padding-left: 120px;
 }
 
-.produto {
+/* SECTION 4 */
+
+.section_4 {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.section_4_texto {
     display: flex;
     flex-direction: column;
     text-align: right;
@@ -120,18 +163,11 @@ body{
     padding-right: 100px;
 }
 
-.produto h1 {
+.section_4_texto h1 {
     z-index: 2;
-    font-size: 80px;
-    color: #FFBC42;
-    letter-spacing: 5px;
 }
 
-.produto p {
-    padding-right: 50px;
-    letter-spacing: 5px;
-    font-size: 50px;
+.section_4_texto p {
     margin-top: 60px;
-    font-style: italic;
-    color: #fff;
 }
+/* FOOTER */
