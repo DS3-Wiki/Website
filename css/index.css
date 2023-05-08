@@ -95,6 +95,13 @@ body{
     pointer-events: none;
 }
 
+.barra_home {
+    background: #FFBC42;
+    width: 100%;
+    height: 3vh;
+    margin-top: -3px;
+}
+
 /* SECTION 1 */
 
 .section_1 {
