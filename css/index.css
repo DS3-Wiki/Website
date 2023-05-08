@@ -99,7 +99,7 @@ body{
     background: #FFBC42;
     width: 100%;
     height: 3vh;
-    margin-top: -3px;
+    margin-top: -5px;
 }
 
 /* SECTION 1 */
@@ -124,6 +124,12 @@ body{
     display: flex;
     flex-direction: row-reverse;
     margin-top: 150px;
+}
+
+.section_2_texto {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 }
 
 .section_2_texto h1{
