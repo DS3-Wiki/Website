@@ -118,6 +118,19 @@ body{
     padding-left: 100px
 }
 
+.section_1_images{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    height: 40vh;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.section_1_images img {
+    width: 60vh;
+}
+
 /* SECTION 2 */
 
 .section_2 {
@@ -138,6 +151,18 @@ body{
 
 .section_2_texto p {
     padding-right: 100px
+}
+
+.section_2_images {
+    display:flex;
+    flex-direction: row;
+    position: relative;
+    overflow-x: auto;
+    right: 240px;
+}
+
+.section_2_images img {
+    width: 80vh;
 }
 
 /* SECTION 3 */
