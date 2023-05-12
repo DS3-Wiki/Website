@@ -354,9 +354,13 @@ body{
 @media (max-width: 1366px){
 
     .home-video{
-        height:119vh;
+        height:114vh;
     }
 
+    .quem_sou {
+        height: 345px;
+    }
+    
     .quem_sou_texto{
         padding: 16px;
         height: 136px;
@@ -399,7 +403,7 @@ body{
     }
 
     .fogueira_gif img {
-        width: 171px;
+        width: 144px;
         padding-left: 37px;
         margin-bottom: 25px;
     }
