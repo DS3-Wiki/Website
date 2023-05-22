@@ -41,14 +41,16 @@
                 </li>
                 <li>
                     <a href="#Footer">
-                        Contato
+                        Login
                     </a>
                 </li>
             </ul>
         </nav>
+        <!-- https://www.youtube.com/embed/3egPLrAGZNM -->
+
         <iframe id="Home"
         class="home_video" 
-        src="https://www.youtube.com/embed/3egPLrAGZNM?autoplay=1&mute=1&loop=1&controls=0&rel=0&playlist=3egPLrAGZNM"
+        src="https://www.youtube.com/embed/_zDZYrIUgKE?autoplay=1&mute=1&loop=1&controls=0&rel=0&playlist=_zDZYrIUgKE"
         frameborder="0">
         </iframe>
         <div class="barra_home"></div>
@@ -59,15 +61,17 @@
                 <p>Novas possibilidades, 
                 <br>Novas formas de jogar,
                 <br>Nunca ficou tão fácil compartilhar suas builds<p>
-            </div>a
-            <div class="section_1_images">
-                <img src=".//Assets/img/Builds/dex-build.avif">
-                <img src=".//Assets/img/Builds/mage-build.avif">
-                <img src=".//Assets/img/Builds/paladin-build.avif">
-                <img src=".//Assets/img/Builds/piromancer-build.avif">
-                <img src=".//Assets/img/Builds/quality-build.avif">awefawe
             </div>
-        </section>asd
+            <div class="section_1_images">
+                <div class="carrossel">
+                    <img src=".//Assets/img/Builds/dex-build.avif">
+                    <img src=".//Assets/img/Builds/mage-build.avif">
+                    <img src=".//Assets/img/Builds/paladin-build.avif">
+                    <img src=".//Assets/img/Builds/piromancer-build.avif">
+                    <img src=".//Assets/img/Builds/quality-build.avif">
+                </div>
+            </div>
+        </section>
         <!-- SECTION 2 -->
         <section class="section_2">
             <div class="section_2_texto">
@@ -92,13 +96,13 @@
                     <img src=".//Assets/img/emotes1.png">
         </section>
         <!-- SECTION 4 -->
-        <section class="section_4">
+        <!-- <section class="section_4">
             <div class="section_4_texto">
                 <h1>Nosso produto</h1>
                 <p>Uma forma mais simples de <br>visualizar builds, uma forma mais <br>fácil de decidir seu caminho.</p>
             </div>
             <img src="./Assets/img/emotes2.png">
-        </section>
+        </section> -->
     
         <div class="barra_home"></div>
         <!-- FOOTER -->
@@ -134,3 +138,22 @@
     </main>
 </body>
 </html>
+
+<script>
+    const imgs = document.getElementsByClassName("section_1_images");
+    const img = document.querySelectorAll("#section_1_images img");
+    let x = 0;
+
+    function carrossel() {
+        x++;
+
+        if(x > img.length -1){
+            x = 0;
+        }
+        
+        imgs.style.transform = `translateX(${-x * 500}px)`;
+    }
+
+    setInterval(carrossel, 1800)
+    
+</script>   

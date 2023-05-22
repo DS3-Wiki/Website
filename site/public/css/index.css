@@ -70,6 +70,8 @@ body{
 .lista_navbar li :hover{
     transition: .3s ease;
     color:#FFBC42;
+    animation-name: lista_navbar_effect;
+    text-shadow: 0px 0px 15px #FFBC42;
 }
 
 .home_button a {
@@ -86,7 +88,7 @@ body{
     position: absolute;
     padding-left: 95px;
     margin-top: -30px;
-}
+}   
 
 /* HOME-VIDEO */
 
@@ -125,14 +127,37 @@ body{
     display: flex;
     flex-direction: row;
     position: relative;
-    height: 40vh;
+    height: 50vh;
     width: 100%;
-    overflow-x: auto;
+
 }
 
-.section_1_images img {
-    width: 60vh;
+.carrossel {
+    display: flex;
+    width: 1100px;
+    flex-direction: row;
+    overflow: hidden;
 }
+
+.carrossel img {
+    width: 80vh;
+    position: relative;
+    animation: slide 20s infinite;
+
+}
+
+@keyframes slide {
+    0%{
+        right: 100vh
+    }
+    99% {
+        right: 2461px;
+    }
+    100% {
+        right: 0vh
+    }
+}
+
 
 /* SECTION 2 */
 
@@ -159,13 +184,14 @@ body{
 .section_2_images {
     display:flex;
     flex-direction: row;
+    height: 50vh;
     position: relative;
     overflow-x: auto;
     right: 240px;
 }
 
 .section_2_images img {
-    width: 80vh;
+    width: 90vh;
 }
 
 /* SECTION 3 */
@@ -173,6 +199,7 @@ body{
 .section_3 {
     display: flex;
     margin-top: 150px;
+    margin-bottom: 200px;
 }
 
 .section_3_texto h1{
@@ -187,6 +214,7 @@ body{
     width: 50vh;
     padding-left: 448px;
 }
+
 
 /* SECTION 4 */
 
