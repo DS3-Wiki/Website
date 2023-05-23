@@ -29,9 +29,9 @@ function login(req, res) {
     var password = req.body.passwordServer;
 
     if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Seu e-mail não foi encontrado!");
     } else if (password == undefined) {
-        res.status(400).send("Sua password está indefinida!");
+        res.status(400).send("Sua senha está incorreta!");
     } else {
         
         usuarioModel.entrar(email, password)
@@ -65,18 +65,21 @@ function cadastrar(req, res) {
     var name = req.body.nameServer;
     var email = req.body.emailServer;
     var password = req.body.passwordServer;
-
+    var ds_experience = req.body.ds_experienceServer;
+    
     // Faça as validações dos valores
     if (name == undefined) {
-        res.status(400).send("Seu nome está undefined!");
+        res.status(400).send("Este nome não é permitido!");
     } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Este e-mail não é permitido!");
     } else if (password == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else {
+        res.status(400).send("Esta senha não é permitida");
+    }else if (ds_experience == undefined) {
+        res.status(400).send("O valor da experiência não é permitido");
+    }else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(name, email, password)
+        usuarioModel.cadastrar(name, email, password, ds_experience)
             .then(
                 function (resultado) {
                     res.json(resultado);
