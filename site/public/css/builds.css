@@ -152,3 +152,47 @@ body{
 .build_grafico {
     width: 400px;
 }
+
+/* MODAL */
+
+.modal_login_cadastro {
+    display: flex;
+    gap: 500px;
+    position: absolute;
+    background-color: aqua;
+    left: 448px;
+    bottom: 32px;
+    width: 445px;
+    height: 455px;
+    overflow-x: hidden;
+    border-radius: 40px;
+}
+
+.login p, .login div p {
+    margin-left: 50px;
+    margin-top: 50px;
+    font-size: 40px;
+}
+
+.login div input {
+    margin-left: 50px;
+    width: 250px;
+    height: 30px;
+}
+
+.login div {
+    margin-top: 50px;
+}
+
+.login div button {
+    width: 200px;
+    height: 50px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+
+.login{
+    width: 400px;
+}
+
+
