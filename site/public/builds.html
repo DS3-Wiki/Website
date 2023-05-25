@@ -197,42 +197,56 @@
             </div>
         </section>   
 
-        <div class="modal_login_cadastro">
-            <div class="login">
-                <p>Login</p>
-                <div class="email">
-                    <p>Email</p>
-                    <input id="input_login_email">
+
+        <!-- MODAL  -->
+
+        <div class="modal" id="modal_background">
+            <div class="modal_login_cadastro" id="modal">
+                <!-- MODAL LOGIN -->
+                <div class="login" id="login">
+                    <p>Login</p>
+                    <div class="email">
+                        <p>Email</p>
+                        <input id="input_login_email">
+                    </div>
+                    <div class="senha">
+                        <p>Senha:</p>
+                        <input type="password" id="input_login_password">
+                    </div>
+                    <div class="botao">
+                        <button onclick="login()">Login</button>
+                        <a onclick="modal_to_cadastro()">
+                            <p>Ainda não possuo cadastro</p>
+                        </a>
+                    </div>
                 </div>
-                <div class="senha">
-                    <p>Senha:</p>
-                    <input type="password" id="input_login_senha">
-                </div>
-                <div class="botao">
-                    <button>Login</button>
+                <!-- MODAL CADASTRO -->
+                <div class="cadastro">
+                    <p>Cadastro</p>
+                    <div class="email">
+                        <p>Nome</p>
+                        <input id="input_cadastro_name">
+                    </div>
+                    <div class="email">
+                        <p>Email</p>
+                        <input id="input_cadastro_email">
+                    </div>
+                    <div class="email">
+                        <p>Senha:</p>
+                        <input type="password" id="input_cadastro_password">
+                    </div>
+                    <div class="ds_experience">
+                        <p>Experiência em DS</p>
+                    </div>
+                    <div class="botao">
+                        <button onclick="cadastrar()">Cadastrar</button>
+                        <a onclick="modal_to_login()">
+                            <p>Quero fazer o login</p>
+                        </a>
+                    </div>
                 </div>
             </div>
-
-            <div class="cadastro">
-                <p>Login</p>
-                <div class="email">
-                    <p>Email</p>
-                    <input id="input_cadastro_email">
-                </div>
-                <div class="senha">
-                    <p>Senha:</p>
-                    <input type="password" id="input_cadastro_senha">
-                </div>
-                <div class="ds_experience">
-                    <p>Experiência em DS</p>
-                </div>
-                <div class="botao">
-                    <button>Cadastrar</button>
-                </div>
-
-            </div>
-
-        </div>      
+        </div>
 
     </main>
 </body>
@@ -263,18 +277,40 @@
 
 </script>
 
-<!-- LOGIN -->
+         <!-- setTimeout(()=> {
+                
+                for(i=0; i > -397; i--) {
+        
+                    tela_login.style.marginLeft = `${i}px`;
+            }
+            }, 1000)
+         -->
+
+<!-- CADASTRO -->
 <script>
- function login() {
-        aguardar();
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+    var tela_login = document.getElementById("login");
+    var modal = document.getElementById("modal");
+    var modal_background = document.getElementById("modal_background")
 
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+    function modal_to_login(){
+        tela_login.style.marginLeft = "0px";
+        modal.style.height = "510px";
+    }
+
+    function modal_to_cadastro() {
+         tela_login.style.marginLeft = "-397px";
+         modal.style.height = "660px";  
+    }
+
+
+    function login() {
+
+        var emailVar = input_login_email.value;
+        var passwordVar = input_login_password.value;
+
+        if (emailVar == "" || passwordVar == "") {
+            alert("Todos os campos precisam ser preenchidos")            
             return false;
         }
         else {
@@ -282,19 +318,19 @@
         }
 
         console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+        console.log("FORM SENHA: ", passwordVar);
 
-        fetch("/usuarios/autenticar", {
+        fetch("/usuarios/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                passwordServer: passwordVar
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
+            console.log("ESTOU NO THEN DO login()!")
 
             if (resposta.ok) {
                 console.log(resposta);
@@ -308,7 +344,8 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        alert("Login realizado !!")
+                        modal_background.style.display = "none";;
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -330,24 +367,15 @@
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
-</script>
-
-<!-- CADASTRO -->
-<script>
     function cadastrar() {
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var nomeVar = nome_input.value;
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-        var ds_experienceVar = ds_experience_input.value
+        var nameVar = input_cadastro_name.value
+        var emailVar = input_cadastro_email.value;
+        var passwordVar = input_cadastro_password.value;
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || ds_experienceVar == "") {
-            cardErro.style.display = "block"
+        if (nameVar == "" || emailVar == "" || passwordVar == "") {
             mensagem_erro.innerHTML = "(Todos os campos devem ser preenchidos)";
 
             return false;
@@ -365,25 +393,18 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
+                nameServer: nameVar,
                 emailServer: emailVar,
-                senhaServer: senhaVar,
-                ds_experienceServer: ds_experienceVar,
+                passwordServer: passwordVar,
             })
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
-
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
-
-                <!-- TIRAR MODAL -->
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
-
+                alert("Cadastro realizado !!")
+                modal_background.style.display = "none";
+            
                 limparFormulario();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -393,10 +414,6 @@
         });
 
         return false;
-    }
-
-    function sumirMensagem() {
-        cardErro.style.display = "none"
     }
 </script>
 
@@ -409,13 +426,12 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             finalizarAguardar();
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            alert("Erro ao efetuar o cadastro")
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -468,7 +484,6 @@
     }
 
     function sumirMensagem() {
-        cardErro.style.display = "none"
     }
 </script>
 
@@ -482,7 +497,6 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             finalizarAguardar();
             return false;
@@ -541,6 +555,5 @@
     }
 
     function sumirMensagem() {
-        cardErro.style.display = "none"
     }
 </script>

@@ -34,22 +34,11 @@ function login(req, res) {
         res.status(400).send("Sua senha está incorreta!");
     } else {
         
-        usuarioModel.entrar(email, password)
-            .then(
-                function (resultado) {
-                    console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
-
-                    if (resultado.length == 1) {
-                        console.log(resultado);
-                        res.json(resultado[0]);
-                    } else if (resultado.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
-                }
-            ).catch(
+        usuarioModel.login(email, password)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }).catch(
                 function (erro) {
                     console.log(erro);
                     console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
@@ -65,8 +54,7 @@ function cadastrar(req, res) {
     var name = req.body.nameServer;
     var email = req.body.emailServer;
     var password = req.body.passwordServer;
-    var ds_experience = req.body.ds_experienceServer;
-    
+        
     // Faça as validações dos valores
     if (name == undefined) {
         res.status(400).send("Este nome não é permitido!");
@@ -74,17 +62,14 @@ function cadastrar(req, res) {
         res.status(400).send("Este e-mail não é permitido!");
     } else if (password == undefined) {
         res.status(400).send("Esta senha não é permitida");
-    }else if (ds_experience == undefined) {
-        res.status(400).send("O valor da experiência não é permitido");
     }else {
-        
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(name, email, password, ds_experience)
+            usuarioModel.cadastrar(name, email, password)
             .then(
                 function (resultado) {
                     res.json(resultado);
-                }
-            ).catch(
+                })
+                .catch(
                 function (erro) {
                     console.log(erro);
                     console.log(
@@ -98,7 +83,7 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-    entrar,
+    login,
     cadastrar,
     listar,
     testar
