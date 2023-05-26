@@ -278,7 +278,7 @@ body{
 .animar_to_cadastro {
     animation: to_cadastro 2s linear;
 }
-
+/*
 @keyframes to_cadastro{
     0% {
         .login{
@@ -304,7 +304,7 @@ body{
         }
     }
 }
-
+*/
 .login p, .login div p {
     margin-left: 50px;
     margin-top: 39px;
