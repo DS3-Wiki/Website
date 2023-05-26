@@ -101,11 +101,11 @@ body{
 }
 
 .barra_home {
-    background: #252525;
+    background: linear-gradient(180deg, rgba(255,188,66,1) 0%, rgba(37,37,37,100) 40%);
     width: 100%;
     height: 16vh;
     margin-top: -137px;
-    z-index: 2;
+    z-index: 1;
     position: absolute;
 }
 
