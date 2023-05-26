@@ -154,7 +154,92 @@ body{
 .build_grafico {
     width: 400px;
 }
-     
+ 
+/* ANALYTICS */
+
+.status {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 40px;
+}
+
+.status div {
+    height: 320px;
+    background: #9B1F1F;
+    width: 232px;
+    margin-top: 50px;
+    margin-left: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.status p {
+    height: 20px;
+    font-size: 40px;
+    font-weight: 800;
+    font-family: darksouls;
+}
+
+
+.status_damage ul {
+    margin-left: 20px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.status_damage ul li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 20px;
+}
+
+.status_damage ul li img {
+    width: 25px;
+}
+
+.itens {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.itens p{
+    height: 20px;
+    font-size: 40px;
+    font-weight: 800;
+    font-family: darksouls;
+}
+.itens div{
+    background: #9B1F1F;
+    width: 500px;
+    height: 330px;
+}
+
+/* BOSSES */
+
+.boss_list{
+    margin: 25px;
+    width: 1300px;
+    background: #9B1F1F!important;
+}
+
+.boss_list input {
+    height: 40px!important;
+    width: 260px;
+    margin-left: 40px!important;
+    background: #252525;
+    border: none;
+    font-family: darksouls;
+    color: #FFBC42;
+    font-size: 25px;
+}
+
 
 /* MODAL */
 

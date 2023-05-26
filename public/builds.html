@@ -41,17 +41,74 @@
             </ul>
         </nav>
         <section class="section_1">
-            <!-- Boss -->
-            <div class="boss">
-                CHEFE
 
-                <!-- Filtrar o nome do chefe e trazer as informações dele direto do banco de dados -->
-                <input id="input_boss_name">
-                <datalist list="input_boss_name">
-                    <!-- Vindo do Banco -->
-                    <option value=""></option>
-                </datalist>
-                <img src="">
+             <!-- ANALYTICS -->
+            <div class="analytics">
+                
+                <div class="status">
+                     <p>Tipos de dano:</p>
+
+                     <div class="status_damage">
+                        <ul>
+                            <li>
+                                <img src="./Assets/img/stats/magic.png">
+                                Magia
+                            </li>
+                            <li>
+                                <img src="./Assets/img/stats/fogo.png">
+                                Fogo
+                            </li>
+                            <li>
+                                <img src="./Assets/img/stats/raio.png">
+                                Raio
+                            </li>
+                            <li>
+                                <img src="./Assets/img/stats/escuridao.png">
+                                Escuridão
+                            </li>
+                            <li>
+                                <img src="./Assets/img/stats/standard.png">
+                                Standard
+                            </li>
+                            <li>
+                                <img src="./Assets/img/stats/thrust.png">
+                                Thrust
+                            </li>
+                        </ul>
+                     </div>
+                 </div>
+                 <div class="itens">
+                    <p>Itens recomendados:</p>
+
+                    <div class="itens_list">
+
+                    </div>
+                 </div>
+            </div>
+
+            <!-- BOSS -->
+            <div class="boss">
+                
+                <div class="boss_list">
+                    <!-- Filtrar o nome do chefe e trazer as informações dele direto do banco de dados -->
+                    <input id="input_boss_name">
+                        <datalist list="input_boss_name">
+                        <!-- Vindo do Banco -->
+                            <option value=""></option>
+                        </datalist>
+                    <img src="">
+
+                    <div class="boss_status">
+
+                    </div>
+                    
+                    <div class="boss_grafico">
+    
+                    </div>
+
+
+                </div>
+                
             </div>
               <!-- BUILDS -->
               <div class="build">
@@ -191,10 +248,8 @@
                   
             </div>
 
-                <!-- ANALYTICS -->
-            <div class="analytics">
-                Analytics
-            </div>
+     
+
         </section>   
 
 
@@ -286,7 +341,7 @@
             }, 1000)
          -->
 
-<!-- CADASTRO -->
+<!-- CADASTRO E LOGIN -->
 <script>
 
     var tela_login = document.getElementById("login");
@@ -417,7 +472,8 @@
     }
 </script>
 
-<!-- BOSSES -->
+<!-- BUILDS -->
+
 <script>
     function entrar() {
         aguardar();
@@ -431,7 +487,7 @@
             return false;
         }
         else {
-            alert("Erro ao efetuar o cadastro")
+            setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -487,8 +543,7 @@
     }
 </script>
 
-<!-- BUILDS -->
-
+<!-- BOSSES -->
 <script>
     function entrar() {
         aguardar();
@@ -502,7 +557,7 @@
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            alert("Erro ao efetuar o cadastro")
         }
 
         console.log("FORM LOGIN: ", emailVar);
