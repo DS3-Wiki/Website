@@ -160,7 +160,7 @@ body{
 
 @keyframes slide {
     0%{
-        right: 100vh
+        right: 100vh;
     }
     99% {
         right: 2461px;
@@ -260,7 +260,22 @@ body{
     margin-bottom: 100px;
 }
 
+.barra_footer {
+    background: linear-gradient(0deg, rgba(255,188,66,1) 0%, rgba(37,37,37,100) 30%);
+    width: 100%;
+    height: 16vh;
+    margin-top: -127px;
+    z-index: 1;
+    position: absolute;
+}
+
 /* FOOTER */
+
+.quem_sou_div{
+    background: #FFBC42;
+    width: 100%;
+    height: 500px;
+}
 
 .footer {
     display: flex;
@@ -270,7 +285,7 @@ body{
     width: 100%;
     height: 60vh;
     background: #9b1f1f;
-    opacity: 65%;
+    opacity: 100%;
 }  
 
 .social {
