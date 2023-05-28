@@ -1,16 +1,16 @@
 var express = require("express");
 var router = express.Router();
 
-var avisoController = require("../controllers/avisoController");
+var bossController = require("../controllers/bossController");
 
 router.get("/", function (req, res) {
-    avisoController.testar(req, res);
+    bossController.testar(req, res);
 });
 
 
 
 router.get("/pesquisar/:id_boss", function (req, res) {
-    avisoController.boss_pesquisar(req, res);
+    bossController.boss_pesquisar(req, res);
 });
 
 

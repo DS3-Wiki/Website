@@ -197,10 +197,19 @@ body{
     align-items: center;
     gap: 14px;
     font-size: 20px;
+    transition: 0.3 ease;
+    cursor: pointer;
 }
 
 .status_damage ul li img {
     width: 25px;
+}
+
+.status_damage_hover {
+    transition: 0.3 ease;
+    transform: scale(1.1);
+    color: #fff;
+    box-shadow: 0 0 10px #252525;
 }
 
 .itens {
@@ -225,7 +234,7 @@ body{
 
 .boss_list{
     margin: 25px;
-    width: 1300px;
+    width: 100%;    
     background: #9B1F1F!important;
 }
 
@@ -248,7 +257,7 @@ body{
 }
 
 .modal {
-    display: flex;
+    display: none;
     z-index: 2;
     position: absolute;
     width: 100%;
@@ -278,33 +287,7 @@ body{
 .animar_to_cadastro {
     animation: to_cadastro 2s linear;
 }
-/*
-@keyframes to_cadastro{
-    0% {
-        .login{
-            margin-left: 0px;
-        }
-    }
-    100% {
-        .login{
-            margin-left: -397px;
-        }
-    }
-}
 
-@keyframes to_login {
-    0% {
-        .login{
-            margin-left: -397px;;
-        }
-    }
-    100% {
-        .login{
-            margin-left: 0px;
-        }
-    }
-}
-*/
 .login p, .login div p {
     margin-left: 50px;
     margin-top: 39px;

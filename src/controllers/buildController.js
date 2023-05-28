@@ -1,12 +1,12 @@
-var medidaModel = require("../models/buildModel");
+var buildModel = require("../models/buildModel");
 
 function build_buscar(req, res) {
 
-    var name = req.params.name;
+    var name = req.body.name;
 
     console.log('As builds estão sendo buscadas');
 
-    medidaModel.build_buscar(name).then(function (resultado) {
+    buildModel.build_buscar(name).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -20,7 +20,7 @@ function build_buscar(req, res) {
 }
 
 
-function buscar_inserir(req, res) {
+function build_inserir(req, res) {
 
     var idBuild = req.params.idBuild;
     var perks = req.params.perks;
@@ -29,7 +29,7 @@ function buscar_inserir(req, res) {
 
     console.log(`As builds estão sendo inseridas`);
 
-    medidaModel.build_inserir(idBuild, perks, name, fkUser).then(function (resultado) {
+    buildModel.build_inserir(idBuild, perks, name, fkUser).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -42,8 +42,54 @@ function buscar_inserir(req, res) {
     });
 }
 
+// function item_todos(req, res) {
+//     console.log(`Requisição para pegar todos os items`);
+
+//     buildModel.item_todos().then((resultado) => {
+
+//         if (resultado.length > 0) {
+//             console.log('Deu certo');
+//         } else {
+//          console.log('Deu erro aqui na controller');   
+//         }
+//     }).catch(function (erro) {
+//         console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+//         res.status(500).json(erro.sqlMessage);
+//     });
+// }
+function item_todos(req, res) {
+    buildModel.item_todos()
+      .then((response) => {
+        res.json(response);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error.sqlMessage);
+      });
+  }
+
+function item_buscar(req, res) {
+
+    var item_name = req.body.item_name_server;
+
+    console.log('As builds estão sendo buscadas');
+
+    buildModel.item_buscar(item_name).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar o item.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     build_buscar,
-    build_inserir
-
+    build_inserir,
+    item_buscar,
+    item_todos
 }

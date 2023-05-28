@@ -1,14 +1,14 @@
-var avisoModel = require("../models/avisoModel");
+var bossModel = require("../models/bossModel");
 
 function testar(req, res) {
-    console.log("ENTRAMOS NO avisoController");
+    console.log("ENTRAMOS NO bossModel");
     res.send("ENTRAMOS NO AVISO CONTROLLER");
 }
 
 function boss_pesquisar(req, res) {
     var boss_name = req.params.descricao;
 
-    avisoModel.boss_pesquisar(boss_name)
+    bossModel.boss_pesquisar(boss_name)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -28,6 +28,6 @@ function boss_pesquisar(req, res) {
 
 
 module.exports = {
-    pesquisarDescricao,
+    boss_pesquisar,
     testar
 }

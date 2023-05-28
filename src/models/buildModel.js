@@ -38,8 +38,34 @@ function build_inserir(idBuild, perks, name, fkUser) {
     return database.executar(instrucaoSql);
 }
 
+function item_todos() {
+
+    let instrucaoSql = `
+        SELECT * FROM build_itens;`
+
+    return database.executar(instrucaoSql);
+}
+
+function item_buscar(item_name) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `
+        SELECT * FROM build_itens
+            WHERE name LIKE '${item_name}%';`
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     build_buscar,
-    build_inserir
+    build_inserir,
+    item_buscar,
+    item_todos
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,9 @@
     <title>Builds</title>
     <link rel="stylesheet" href="./css/builds.css">
     <link rel="shortcut icon" href="./Assets/img/pngwing.com.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <main>
         <nav class="navbar">
@@ -42,233 +45,156 @@
         </nav>
         <section class="section_1">
 
-             <!-- ANALYTICS -->
+            <!-- ANALYTICS -->
             <div class="analytics">
-                
-                <div class="status">
-                     <p>Tipos de dano:</p>
 
-                     <div class="status_damage">
+                <div class="status">
+                    <p>Tipos de dano:</p>
+
+                    <div class="status_damage">
                         <ul>
                             <li>
                                 <img src="./Assets/img/stats/magic.png">
-                                <a onclick="">Magia</a>
+                                <a id="id_magia" onclick="item_por_status()">Magia</a>
                             </li>
                             <li>
                                 <img src="./Assets/img/stats/fogo.png">
-                                <a onclick="">Fogo</a>
+                                <a id="id_fogo" onclick="fogo()">Fogo</a>
                             </li>
                             <li>
                                 <img src="./Assets/img/stats/raio.png">
-                                <a onclick="">Raio</a>
+                                <a id="id_raio" onclick="raio()">Raio</a>
                             </li>
                             <li>
                                 <img src="./Assets/img/stats/escuridao.png">
-                                <a onclick="">Escuridão</a>
+                                <a id="id_escuridao" onclick="escuridao()">Escuridão</a>
                             </li>
                             <li>
                                 <img src="./Assets/img/stats/standard.png">
-                                <a onclick="">Standard</a>
+                                <a id="id_standard" onclick="standard()">Standard</a>
                             </li>
                             <li>
                                 <img src="./Assets/img/stats/thrust.png">
                                 Thrust
                             </li>
                         </ul>
-                     </div>
-                 </div>
-                 <script>
-                    function magia() {}
-                
-                    function fogo() {}
-
-                    function raio() {}
-
-                    function escuridao() {}
-
-                    function standard() {}
-
-                 </script>
-                 <div class="itens">
+                    </div>
+                </div>
+                <div class="itens">
                     <p>Itens recomendados:</p>
 
-                    <div class="itens_list">
-
+                    <input id="input_item_buscar">
+                    <div class="itens_list" id="div_itens">
                     </div>
-                 </div>
+                </div>
             </div>
 
             <!-- BOSS -->
             <div class="boss">
-                
+
                 <div class="boss_list">
                     <!-- Filtrar o nome do chefe e trazer as informações dele direto do banco de dados -->
                     <input id="input_boss_name">
-                        <datalist list="input_boss_name">
+                    <datalist list="input_boss_name">
                         <!-- Vindo do Banco -->
-                            <option value=""></option>
-                        </datalist>
+                        <option value=""></option>
+                    </datalist>
                     <img src="">
 
                     <div class="boss_status">
 
                     </div>
-                    
+
                     <div class="boss_grafico">
-    
+
                     </div>
 
 
                 </div>
-                
+
             </div>
-              <!-- BUILDS -->
-              <div class="build">
+            <!-- BUILDS -->
+            <div class="build">
 
                 <div class="stats">
                     <!-- VIGOR -->
-                    <figure>  
+                    <figure>
                         <img src="./Assets/img/stats/Vigor_Icon.webp">
-                        <input onkeyup="atualizar_grafico()"  id="atributo_Vigor">
+                        <input onkeyup="atualizar_grafico()" id="atributo_Vigor">
                     </figure>
 
                     <!-- ATTUNEMENT  -->
                     <figure>
                         <img src="./Assets/img/stats/Attunement_Icon.webp">
-                        <input onkeyup="atualizar_grafico()"  id="atributo_Attunement">
+                        <input onkeyup="atualizar_grafico()" id="atributo_Attunement">
                     </figure>
 
                     <!-- ENDURENCE -->
                     <figure>
-                        <img src="./Assets/img/stats/Endurance_Icon.webp">    
-                        <input onkeyup="atualizar_grafico()"  id="atributo_Endurence">
+                        <img src="./Assets/img/stats/Endurance_Icon.webp">
+                        <input onkeyup="atualizar_grafico()" id="atributo_Endurence">
                     </figure>
 
                     <!-- VITALITY  -->
                     <figure>
                         <img src="./Assets/img/stats/Vitality_Icon.webp">
-                        <input onkeyup="atualizar_grafico()"  id="atributo_Vitality">
+                        <input onkeyup="atualizar_grafico()" id="atributo_Vitality">
                     </figure>
 
                     <!-- STRENGTH  -->
                     <figure>
                         <img src="./Assets/img/stats/Strength_Icon.webp">
-                        <input onkeyup="atualizar_grafico()"  id="atributo_Strength">
+                        <input onkeyup="atualizar_grafico()" id="atributo_Strength">
                     </figure>
-                    href
-                    href
-                    href
-                    href
-                    href
+
                     <!-- DEXTERITY  -->
                     <figure>
                         <img src="./Assets/img/stats/Dexterity_Icon.webp">
-                        <input onkeyup="atualizar_grafico()"  id="atributo_Dexterity">
+                        <input onkeyup="atualizar_grafico()" id="atributo_Dexterity">
                     </figure>
 
                     <!-- INTELLIGENCE  -->
                     <figure>
                         <img src="./Assets/img/stats/Intelligence_Icon.webp">
-                        <input onkeyup="atualizar_grafico()"  id="atributo_Intelligence">
+                        <input onkeyup="atualizar_grafico()" id="atributo_Intelligence">
                     </figure>
 
                     <!-- FAITH  -->
                     <figure>
                         <img src="./Assets/img/stats/Faith_Icon.webp">
-                        <input onkeyup="atualizar_grafico()"  id="atributo_Faith">
+                        <input onkeyup="atualizar_grafico()" id="atributo_Faith">
                     </figure>
 
                     <!-- LUCK  -->
                     <figure>
                         <img src="./Assets/img/stats/Luck_Icon.webp">
-                        <input onkeyup="atualizar_grafico()"  id="atributo_Luck">
+                        <input onkeyup="atualizar_grafico()" id="atributo_Luck">
                     </figure>
                 </div>
 
                 <div class="stats_2">
 
-                <div>
-                    <h3>Builds Cadastradas:</h3>
-                    <input>
-                    <h3>Nível:</h3>
-                    <div id="div_nivel_total">
+                    <div>
+                        <h3>Builds Cadastradas:</h3>
+                        <input>
+                        <h3>Nível:</h3>
+                        <div id="div_nivel_total">
+                        </div>
                     </div>
-                </div>   
 
-                <div class="nome_button">
-                    <input id="input_nome" placeholder="Nome">
-                    <button onclick="cadastrar_classe()">Cadastrar</button>
+                    <div class="nome_button">
+                        <input id="input_nome" placeholder="Nome">
+                        <button onclick="cadastrar_classe()">Cadastrar</button>
+                    </div>
+
+                    <!-- GRÁFICO DE JOGADOR DE FUTEBOL PARA A CLASSE  -->
+                    <div class="build_grafico">
+                        <canvas id="myChart"></canvas>
+                    </div>
                 </div>
 
-                 <!-- GRÁFICO DE JOGADOR DE FUTEBOL PARA A CLASSE  -->
-                <div class="build_grafico">
-                    <canvas id="myChart"></canvas>
-                  </div>
-                  
-                  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                  
-                  <script>
-                    var myChart;
-
-                    const ctx = document.getElementById('myChart');
-                  
-                    myChart = new Chart(ctx, {
-                      type: 'polarArea',
-                      data: {
-                        labels: ['VGR', 'ATT', 'END', 'VIT', 'STR', 'DEX', 'INT', 'FTH', 'LCK'],
-                        datasets: [{
-                          label: 'Níveis',
-                          data: [20, 12, 30, 60],
-                          borderWidth: 1
-                        }]
-                      },
-                      options: {
-                        scales: {
-                          y: {
-                            beginAtZero: true
-                          }
-                        }
-                      }
-                    });
-                    function atualizar_grafico() {
-                        
-                        var nivel_total = 
-                            Number( atributo_Vigor.value)+ 
-                            Number( atributo_Attunement.value)+
-                            Number( atributo_Endurence.value)+
-                            Number( atributo_Vitality.value)+
-                            Number( atributo_Strength.value)+
-                            Number( atributo_Dexterity.value)+
-                            Number( atributo_Intelligence.value)+
-                            Number( atributo_Faith.value)+
-                            Number( atributo_Luck.value);
-                        
-                        div_nivel_total.innerHTML = nivel_total;
-                        var statisticas = [
-                        atributo_Vigor.value,
-                        atributo_Attunement.value,
-                        atributo_Endurence.value,
-                        atributo_Vitality.value,
-                        atributo_Strength.value,
-                        atributo_Dexterity.value,
-                        atributo_Intelligence.value,
-                        atributo_Faith.value,
-                        atributo_Luck.value 
-                        
-                        ];
-                        myChart.data.datasets[0].data = statisticas;
-                        myChart.update();
-                    }                    
-                  </script>
-                </div>
-                  
             </div>
-
-     
-
-        </section>   
-
-
+        </section>
         <!-- MODAL  -->
 
         <div class="modal" id="modal_background">
@@ -320,364 +246,8 @@
         </div>
 
     </main>
+    <script src="js/builds_javascript.js"></script>
+    <script src="js/builds_grafico.js"></script>
 </body>
+
 </html>
-<!-- CARROSEL -->
-<script>
-    var numero = 10;
-    var classes = [];
-
-    function cadastrar_classe() {
-        var build = {
-            nome: input_nome.value,
-            atributos: {
-                Vigor: atributo_Vigor.value,
-                Attunement:  atributo_Attunement.value,
-                Endurence: atributo_Endurence.value,
-                Vitality: atributo_Vitality.value,
-                Strength: atributo_Strength.value,
-                Dexterity: atributo_Dexterity.value,
-                Intelligence: atributo_Intelligence.value,
-                Faith: atributo_Faith.value,
-                Luck: atributo_Luck.value 
-            }
-        }
-
-        classes.push(build) 
-    }
-
-</script>
-
-         <!-- setTimeout(()=> {
-                
-                for(i=0; i > -397; i--) {
-        
-                    tela_login.style.marginLeft = `${i}px`;
-            }
-            }, 1000)
-         -->
-
-<!-- CADASTRO E LOGIN -->
-<script>
-
-    var tela_login = document.getElementById("login");
-    var modal = document.getElementById("modal");
-    var modal_background = document.getElementById("modal_background")
-
-    function modal_to_login(){
-        tela_login.style.marginLeft = "0px";
-        modal.style.height = "510px";
-    }
-
-    function modal_to_cadastro() {
-         tela_login.style.marginLeft = "-397px";
-         modal.style.height = "660px";  
-    }
-
-
-    function login() {
-
-        var emailVar = input_login_email.value;
-        var passwordVar = input_login_password.value;
-
-        if (emailVar == "" || passwordVar == "") {
-            alert("Todos os campos precisam ser preenchidos")            
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", passwordVar);
-
-        fetch("/usuarios/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                passwordServer: passwordVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO login()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-
-                    setTimeout(function () {
-                        alert("Login realizado !!")
-                        modal_background.style.display = "none";;
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
-
-    function cadastrar() {
-
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var nameVar = input_cadastro_name.value
-        var emailVar = input_cadastro_email.value;
-        var passwordVar = input_cadastro_password.value;
-
-        if (nameVar == "" || emailVar == "" || passwordVar == "") {
-            mensagem_erro.innerHTML = "(Todos os campos devem ser preenchidos)";
-
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nameServer: nameVar,
-                emailServer: emailVar,
-                passwordServer: passwordVar,
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                alert("Cadastro realizado !!")
-                modal_background.style.display = "none";
-            
-                limparFormulario();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-
-        return false;
-    }
-</script>
-
-<!-- BUILDS -->
-
-<script>
-    function item_pesquisar() {
-
-        if (emailVar == "" || senhaVar == "") {
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
-    
-    function build_pesquisar() {
-
-if (emailVar == "" || senhaVar == "") {
-    mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-
-    return false;
-}
-else {
-    setInterval(sumirMensagem, 5000)
-}
-
-console.log("FORM LOGIN: ", emailVar);
-console.log("FORM SENHA: ", senhaVar);
-
-fetch("/usuarios/autenticar", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        emailServer: emailVar,
-        senhaServer: senhaVar
-    })
-}).then(function (resposta) {
-    console.log("ESTOU NO THEN DO entrar()!")
-
-    if (resposta.ok) {
-        console.log(resposta);
-
-        resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
-
-            sessionStorage.EMAIL_USUARIO = json.email;
-            sessionStorage.NOME_USUARIO = json.nome;
-            sessionStorage.ID_USUARIO = json.id;
-
-            setTimeout(function () {
-                window.location = "./dashboard/cards.html";
-            }, 1000); // apenas para exibir o loading
-
-        });
-
-    } else {
-
-        console.log("Houve um erro ao tentar realizar o login!");
-
-        resposta.text().then(texto => {
-            console.error(texto);
-            finalizarAguardar(texto);
-        });
-    }
-
-}).catch(function (erro) {
-    console.log(erro);
-})
-
-return false;
-}
-</script>
-
-<!-- BOSSES -->
-<script>
-    function entrar() {
-        aguardar();
-
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-
-        if (emailVar == "" || senhaVar == "") {
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            alert("Erro ao efetuar o cadastro")
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
-
-    function sumirMensagem() {
-    }
-</script>
