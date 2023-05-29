@@ -1,5 +1,7 @@
 var buildModel = require("../models/buildModel");
 
+// BUILD
+
 function build_buscar(req, res) {
 
     var name = req.body.name;
@@ -18,7 +20,6 @@ function build_buscar(req, res) {
         res.status(500).json(erro.sqlMessage);
     });
 }
-
 
 function build_inserir(req, res) {
 
@@ -42,21 +43,7 @@ function build_inserir(req, res) {
     });
 }
 
-// function item_todos(req, res) {
-//     console.log(`Requisição para pegar todos os items`);
 
-//     buildModel.item_todos().then((resultado) => {
-
-//         if (resultado.length > 0) {
-//             console.log('Deu certo');
-//         } else {
-//          console.log('Deu erro aqui na controller');   
-//         }
-//     }).catch(function (erro) {
-//         console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-//         res.status(500).json(erro.sqlMessage);
-//     });
-// }
 function item_todos(req, res) {
     buildModel.item_todos()
       .then((response) => {

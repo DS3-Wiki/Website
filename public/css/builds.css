@@ -218,6 +218,12 @@ body{
     justify-content: space-evenly;
 }
 
+.itens_list{
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
 .itens p{
     height: 20px;
     font-size: 40px;
