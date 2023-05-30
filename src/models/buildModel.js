@@ -41,7 +41,7 @@ function build_inserir(idBuild, perks, name, fkUser) {
 function item_todos() {
 
     let instrucaoSql = `
-        SELECT * FROM build_itens;`
+        SELECT * FROM itens;`
 
     return database.executar(instrucaoSql);
 }

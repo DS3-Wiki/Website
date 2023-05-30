@@ -43,7 +43,6 @@ function build_inserir(req, res) {
     });
 }
 
-
 function item_todos(req, res) {
     buildModel.item_todos()
       .then((response) => {
