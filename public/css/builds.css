@@ -157,6 +157,13 @@ body{
  
 /* ANALYTICS */
 
+.analytics {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
 .status {
     display: flex;
     flex-direction: column;
@@ -236,6 +243,42 @@ body{
     height: 330px;
 }
 
+.build_stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.build_stats p {
+    font-family: darksouls;
+    font-size: 35px;
+    font-weight: 900;
+}
+
+.build_stats div{
+    background: #9B1F1F!important;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+}       
+
+.build_stats ul {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+}
+
+.build_stats ul li {
+    list-style: none;
+    display: flex;
+    flex-direction: row-reverse ;
+    align-items: center;
+    margin-bottom: -30px;
+}
+
+.build_stats ul li input {
+    width: 50px;
+}
 /* BOSSES */
 
 .boss_list{
