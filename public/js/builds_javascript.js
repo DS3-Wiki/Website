@@ -76,29 +76,40 @@ async function item_todos() {
         const items = await response.json();
         array_itens.push(items);
         
-        // items.forEach((item) => {
-        //   array_itens.push(item);
-          
-        //   var each_item = document.createElement('div');
-        //   each_item.id = "id_each_item";
-        //   each_item.innerHTML = `
-                    
-        //     <br>
-        //     <div>Nome: ${array_itens[item].weapon_name}<div>
+        items.forEach((item) => {
+            array_itens.push(item);
             
-        //     `
-        //     document.getElementById('div_itens').appendChild(each_item);             
+            var each_item = document.createElement('div');
+            each_item.id = "id_each_item";
+            each_item.innerHTML = `
+                    
+            <br>
+            <div>Nome: ${item.name}<div>
+            
+            `
+            document.getElementById('div_itens').appendChild(each_item);             
 
-        // });
+        });
 
-        for(i=0; array_itens.length; i++){
+        // for(i=0; array_itens.length; i++){
 
-        }
+        // }
         console.log(array_itens)
       } catch (error) {
         console.log(error);
       }
 }
+
+// function item_pesquisar(){
+//     var item_pesquisa = input_boss_name.value;
+
+//     for (i = 0; i < array_itens.length; index++) {
+//         if(){
+
+//         };
+        
+//     }
+// }
 
 function item_por_status() {
     console.log("Estou na item_por_status")

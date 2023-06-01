@@ -229,6 +229,7 @@ body{
     display: flex;
     flex-direction: column;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 .itens p{
@@ -279,6 +280,12 @@ body{
 .build_stats ul li input {
     width: 50px;
 }
+
+#id_each_item {
+    width: 70%;
+    height: 100px;
+}
+
 /* BOSSES */
 
 .boss_list{
