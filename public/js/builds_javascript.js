@@ -1,73 +1,9 @@
 
-var numero = 10;
-var classes = [];
-
-var magia_var = false;
-var fogo_var = false;
-var raio_var = false;
-var escuridao_var = false;
-var standard_var = false;
-
-var array_itens = [];
-
-// STATUS
-
-function magia() {
-    var magia_html = document.getElementById("id_magia")
-
-    if (magia_var) {
-        magia_var = false;
-        magia_html.classList.add("status_damage_hover")
-        return item_por_status();
-    } else {
-        magia_var = true;
-        return item_por_status();
-    }
-}
-
-function fogo() {
-    if (fogo_var) {
-        fogo_var = false;
-        return item_por_status();
-    } else {
-        fogo_var = true;
-        return item_por_status();
-    }
-}
-
-function raio() {
-    if (raio_var) {
-        raio_var = false;
-        return item_por_status();
-    } else {
-        raio_var = true;
-        return item_por_status();
-    }
-}
-
-function escuridao() {
-    if (escuridao_var) {
-        escuridao_var = false;
-        return item_por_status();
-    } else {
-        escuridao_var = true;
-        return item_por_status();
-    }
-}
-
-function standard() {
-    if (standard_var) {
-        standard_var = false;
-        return item_por_status();
-    } else {
-        standard_var = true;
-        return item_por_status();
-    }
-}
-
 //  ITEM 
 
 async function item_todos() {
+
+    array_itens = [];
 
     console.log("Estou antes do try")
     try {   
@@ -75,24 +11,82 @@ async function item_todos() {
         
         const items = await response.json();
         array_itens.push(items);
-        
-        items.forEach((item) => {
-            array_itens.push(item);
-            
+
+        items.forEach((item) => { 
+
+                var each_item = document.createElement('div');
+                each_item.id = "id_each_item";
+                each_item.innerHTML = `
+                        
+                <br>
+                <h3>${item.name}</h3>
+                <table class="tabela_itens">
+                    <tr>
+                        <th>Escala</th>
+                        <th>Dano Físico</th>
+                        <th>Dano Mágico</th>
+                        <th>Dano Fogo</th>
+                        <th>Dano Raio</th>
+                        <th>Dano Escuridão</th>
+                    </tr>
+                    <tr>
+                        <td>${item.Str}/${item.Dex}/${item.Int}/${item.Faith}/${item.Luck}</td>
+                        <td>${item.Physical}</td>
+                        <td>${item.Magic}</td>
+                        <td>${item.Fire}</td>
+                        <td>${item.Lightning}</td>
+                        <td>${item.Dark}</td>
+                    </tr>
+                </table>
+                
+                
+                `
+                document.getElementById('div_itens').appendChild(each_item);             
+    
+        });
+
+function item_por_status(encantamento){
+
+    each_item.innerHTML = ""
+
+    for (i = 0; i < array_itens.length; i++) {
+
+        if(array_itens[i].enchatment == encantamento){
             var each_item = document.createElement('div');
             each_item.id = "id_each_item";
             each_item.innerHTML = `
                     
             <br>
-            <div>Nome: ${item.name}<div>
+            <h3>${array_itens[i].name}</h3>
+            <table class="tabela_itens">
+                <tr>
+                    <th>Escala</th>
+                    <th>Dano Físico</th>
+                    <th>Dano Mágico</th>
+                    <th>Dano Fogo</th>
+                    <th>Dano Raio</th>
+                    <th>Dano Escuridão</th>
+                </tr>
+                <tr>
+                    <td>${array_itens[i].Str}/${array_itens[i].Dex}/${array_itens[i].Int}/${array_itens[i].Faith}/${array_itens[i].Luck}</td>
+                    <td>${array_itens[i].Physical}</td>
+                    <td>${array_itens[i].Magic}</td>
+                    <td>${array_itens[i].Fire}</td>
+                    <td>${array_itens[i].Lightning}</td>
+                    <td>${array_itens[i].Dark}</td>
+                </tr>
+            </table>
+            
             
             `
             document.getElementById('div_itens').appendChild(each_item);             
-
-        });
+        }
+        
+    }   
+}
 
         // for(i=0; array_itens.length; i++){
-
+            
         // }
         console.log(array_itens)
       } catch (error) {
@@ -110,13 +104,6 @@ async function item_todos() {
         
 //     }
 // }
-
-function item_por_status() {
-    console.log("Estou na item_por_status")
-    item_todos();
-    
-
-}
 
 function item_buscar() {
 
