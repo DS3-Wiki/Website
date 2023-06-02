@@ -55,7 +55,7 @@
                         <ul>
                             <li>
                                 <img src="./Assets/img/stats/magic.png">
-                                <a id="id_magia" onclick="item_por_status('Magic')">Magia</a>
+                                <a id="id_magia" onclick="item_todos()">Magia</a>
                             </li>
                             <li>
                                 <img src="./Assets/img/stats/fogo.png">
@@ -92,7 +92,7 @@
                                 <a onclick="">Inteligência</a>
                             </li>
                             <li>
-                                <a onclick="">F</a>
+                                <a onclick="">Fé</a>
                             </li>
                         </ul>
                     </div>
@@ -106,56 +106,18 @@
                     <div class="itens_list" id="div_itens">
                     </div>
                 </div>
-<!-- 
-                <div class="build_stats">
-                    <p>Seus pontos em:</p>
-                    <ul>
-                        <div>
-                            <li>
-                                <input id="input_forca">
-                                Força
-                            </li>
-                            <li>
-                                <input id="input_destreza">
-                                Destreza
-                            </li>
-                            <li>
-                                <input id="input_inteligencia">
-                                Inteligência
-                            </li>
-                            <li>
-                                <input id="input_fe">
-                                Fé
-                            </li>
-                            <li>
-                                <input id="input_sorte">
-                                Sorte
-                            </li>
-                        </div>
-                        </ul>
-                </div> -->
             </div>
 
             <!-- BOSS -->
             <div class="boss">
 
-                <div class="boss_list">
+                <div class="boss_list" id="div_all_bosses">
                     <!-- Filtrar o nome do chefe e trazer as informações dele direto do banco de dados -->
-                    <input id="input_boss_name">
-                    <datalist list="input_boss_name">
-                        <!-- Vindo do Banco -->
-                        <option value=""></option>
-                    </datalist>
-                    <img src="">
-
-                    <div class="boss_status">
-                    </div>
-
-                    <div class="boss_grafico">
-                    </div>
+                    <input onkeydown="boss_pesquisar()" id="input_boss_name" >
                 </div>
 
             </div>
+
             <!-- BUILDS -->
             <div class="build">
 
@@ -237,6 +199,7 @@
                 </div>
 
             </div>
+
         </section>
         <!-- MODAL  -->
 
@@ -291,6 +254,7 @@
     </main>
     <script src="js/builds_javascript.js"></script>
     <script src="js/builds_grafico.js"></script>
+    <script src="js/build_log_cad.js"></script>
 </body>
 
 </html>
