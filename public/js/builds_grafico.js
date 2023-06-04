@@ -4,7 +4,7 @@
     const ctx = document.getElementById('myChart');
 
     myChart = new Chart(ctx, {
-        type: 'polarArea',
+        type: 'radar',
         data: {
             labels: ['VGR', 'ATT', 'END', 'VIT', 'STR', 'DEX', 'INT', 'FTH', 'LCK'],
             datasets: [{

@@ -245,6 +245,15 @@ body{
     font-size: 23px;
 }
 
+#input_item_buscar{
+    background: #252525;
+    width: 300px;
+    border: none;
+    border-radius: 20px;
+    height: 35px;
+    padding-left: 15px;
+    color: #f1f1f1;
+}
 
 .itens {
     flex-direction: column;
@@ -339,6 +348,18 @@ body{
 
 /* BOSSES */
 
+.boss{
+    flex-direction: column;
+}
+
+.boss div {
+    align-items: center;
+    justify-content: center;
+    font-family: darksouls;
+    color: #9B1F1F;
+    font-size: 40px;
+}
+
 .boss_list{
     margin: 25px;
     width: 100%;    
@@ -359,12 +380,25 @@ body{
     font-size: 25px;
 }
 
+#input_boss_buscar{
+    background: #252525;
+    width: 300px;
+    border-radius: 20px;
+    border: none;
+    height: 50px;
+    font-family: darksouls;
+    color:#FFBC42;
+    font-size: 30px;
+    padding-left: 10px;
+}
+
 #div_all_bosses{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 95%;
     height: 700px;
     background: #9B1F1F;
+    padding-top: 95px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -397,7 +431,7 @@ body{
 
 #div_bosses_id img{
     width: 350px;
-    height: 700px;
+    height: auto;
     border-radius: 50%;
     border: 5px solid #252525;
     box-shadow: 35px 30px 1px #FFBC42;

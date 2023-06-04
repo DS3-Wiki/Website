@@ -79,6 +79,7 @@
                             </li>
                         </ul>
                     </div>
+
                     <p>Tipos de Escala:</p>
                     <div class="status_scaling">
                         <ul>
@@ -101,7 +102,7 @@
                 <div class="itens">
                     <p>Itens recomendados:</p>
 
-                    <input id="input_item_buscar">
+                    <input onkeydown="item_por_nome()" id="input_item_buscar">
                     
                     <div class="itens_list" id="div_itens">
                     </div>
@@ -111,9 +112,13 @@
             <!-- BOSS -->
             <div class="boss">
 
+                <div>
+                    <h3>Todos os Chefes:</h3>
+                    <input onkeydown="boss_pesquisar()" id="input_boss_buscar">
+                </div>
+
                 <div class="boss_list" id="div_all_bosses">
                     <!-- Filtrar o nome do chefe e trazer as informações dele direto do banco de dados -->
-                    <input onkeydown="boss_pesquisar()" id="input_boss_name" >
                 </div>
 
             </div>
