@@ -433,7 +433,6 @@ body{
     display: flex;
     flex-direction: column;
     width: 95%;
-    height: 700px;
     background: #9B1F1F;
     padding-top: 95px;
     overflow-y: scroll;
