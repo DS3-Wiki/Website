@@ -50,32 +50,71 @@
 
                 <div class="status">
                     <p>Tipos de dano:</p>
-                    
                     <div class="status_damage">
                         <ul>
                             <li>
-                                <img src="./Assets/img/stats/magic.png">
-                                <a id="id_magia" onclick="item_todos()">Magia</a>
+                                <img src="./Assets/img/enchantments/blessed_gem-icon.png">
+                                <a onclick="item_por_encantamento('Bleesed')">Blessed </a>
                             </li>
                             <li>
-                                <img src="./Assets/img/stats/fogo.png">
-                                <a id="id_fogo" onclick="item_por_status('Fire')">Fogo</a>
+                                <img src="./Assets/img/enchantments/blood_gem-icon.png">
+                                <a onclick="item_por_encantamento('Blood')">Blood </a>
                             </li>
                             <li>
-                                <img src="./Assets/img/stats/raio.png">
-                                <a id="id_raio" onclick="item_por_status('Lightning')">Raio</a>
+                                <img src="./Assets/img/enchantments/chaos_gem-icon.png">
+                                <a onclick="item_por_encantamento('Chaos')">Chaos </a>
                             </li>
                             <li>
-                                <img src="./Assets/img/stats/escuridao.png">
-                                <a id="id_escuridao" onclick="item_por_status('Dark')">Escuridão</a>
+                                <img src="./Assets/img/enchantments/crystal_gem-icon.png">
+                                <a onclick="item_por_encantamento('Crystal')">Crystal </a>
+                            </li>
+                            <li>
+                                <img src="./Assets/img/enchantments/dark_gem-icon.png">
+                                <a id="id_escuridao" onclick="item_por_encantamento('Dark')">Dark </a>
+                            </li>
+                            <li>
+                                <img src="./Assets/img/enchantments/deep_gem-icon.png">
+                                <a onclick="item_por_encantamento('Deep')">Deep </a>
+                            </li>
+                            <li>
+                                <img src="./Assets/img/enchantments/fire_gem-icon.png">
+                                <a id="id_fogo" onclick="item_por_encantamento('Fire')">Fire </a>
+                            </li>
+                            <li>
+                                <img src="./Assets/img/enchantments/heavy_gem-icon.png">
+                                <a onclick="item_por_encantamento('Heavy')">Heavy </a>
+                            </li>
+                            <li>
+                                <img src="./Assets/img/enchantments/hollow_gem-icon.png">
+                                <a onclick="item_por_encantamento('Hollow')">Hollow </a>
+                            </li>
+                            <li>
+                                <img src="./Assets/img/enchantments/lightning_gem-icon.png">
+                                <a id="id_raio" onclick="item_por_encantamento('Lightning')">Lightning </a>
+                            </li>
+                            <li>
+                                <img src="./Assets/img/enchantments/poison_gem-icon.png">
+                                <a onclick="item_por_encantamento('Poison')">Poison </a>
+                            </li>
+                            <li>
+                                <img src="./Assets/img/enchantments/raw_gem-icon.png">
+                                <a onclick="item_por_encantamento('Raw')">Raw </a>
+                            </li>
+                            <li>
+                                <img src="./Assets/img/enchantments/refined_gem-icon.png">
+                                <a onclick="item_por_encantamento('Refined')">Refined </a>
+                            </li>
+                            <li>
+                                <img src="./Assets/img/enchantments/sharp_gem-icon.png">
+                                <a onclick="item_por_encantamento('Sharp')">Sharp </a>
+                            </li>
+                            <li>
+                                <img src="./Assets/img/enchantments/simple_gem-icon.png">
+                                <a id="id_magia" onclick="item_por_encantamento('Simple')">Simple </a>
                             </li>
                             <li>
                                 <img src="./Assets/img/stats/standard.png">
-                                <a id="id_standard" onclick="item_por_status()">Standard</a>
-                            </li>
-                            <li>
-                                <img src="./Assets/img/stats/thrust.png">
-                                Thrust
+                                <a id="id_standard" onclick="item_por_encantamento('not_infusable')">Normal </a>
                             </li>
                         </ul>
                     </div>
@@ -84,16 +123,24 @@
                     <div class="status_scaling">
                         <ul>
                             <li>
-                                <a onclick="">Força</a>
+                                <img src="./Assets/img/stats/Strength_Icon.webp">
+                                <a onclick=""> - Força</a>
                             </li>
                             <li>
-                                <a onclick="">Destreza</a>
+                                <img src="./Assets/img/stats/Dexterity_Icon.webp">
+                                <a onclick=""> - Destreza</a>
                             </li>
                             <li>
-                                <a onclick="">Inteligência</a>
+                                <img src="./Assets/img/stats/Intelligence_Icon.webp">
+                                <a onclick=""> - Inteligência</a>
                             </li>
                             <li>
-                                <a onclick="">Fé</a>
+                                <img src="./Assets/img/stats/Faith_Icon.webp">
+                                <a onclick=""> - Fé</a>
+                            </li>
+                            <li>
+                                <img src="./Assets/img/stats/Luck_Icon.webp">
+                                <a onclick=""> - Sorte</a>
                             </li>
                         </ul>
                     </div>
@@ -103,7 +150,7 @@
                     <p>Itens recomendados:</p>
 
                     <input onkeydown="item_por_nome()" id="input_item_buscar">
-                    
+
                     <div class="itens_list" id="div_itens">
                     </div>
                 </div>

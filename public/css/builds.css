@@ -186,14 +186,17 @@ body{
 }
 
 .status div {
-    height: 320px;
+    height: 354px;
     background: #9B1F1F;
-    width: 232px;
+    width: 442px;
     margin-top: 50px;
     margin-left: 1px;
     display: flex;
+    overflow-y: scroll;
     align-items: center;
     justify-content: start;
+    flex-wrap: wrap;
+    display: flex;
 }
 
 .status p {
@@ -203,12 +206,14 @@ body{
     font-family: darksouls;
 }
 
-
 .status_damage ul {
     margin-left: 20px;
     list-style: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     gap: 25px;
 }
 
@@ -221,8 +226,14 @@ body{
     cursor: pointer;
 }
 
+.status_damage ul li a {
+    font-family: darksouls;
+    color: #f1f1f1;
+    font-size: 27px;
+}
+
 .status_damage ul li img {
-    width: 25px;
+    width: 60px;
 }
 
 .status_damage_hover {
@@ -242,7 +253,16 @@ body{
 
 .status_scaling ul li {
     list-style: none;
-    font-size: 23px;
+}
+
+.status_scaling ul li a {
+    font-size: 33px;
+    font-family: darksouls;
+    color: #f1f1f1;
+}
+
+.status_scaling ul li img {
+    width: 32px;    
 }
 
 #input_item_buscar{
@@ -273,21 +293,37 @@ body{
 }
 
 .itens p{
-    height: 20px;
-    font-size: 40px;
+    height: 38px;
+    font-size: 24px;
     font-weight: 800;
     font-family: darksouls;
+}
+
+.itens_texto_header{
+    background: #9B1F1F!important;
+    display: flex;
+    flex-direction: row;
 }
 
 #id_each_item {
     display: flex;
     flex-direction: column;
-    justify-content: start;
     background: #9B1F1F;
     width: 100%;
     height: 90px;
     padding: 10px;
     color: #f1f1f1;
+}
+
+.item_name_style{
+    font-family: 'Secular One', sans-serif; 
+}
+
+.item_enchatment_style{
+    font-size: 31px;
+    font-weight: 900;
+    font-family: darksouls;
+    color: #5EFF91;
 }
 
 #id_each_item h3 {
@@ -299,9 +335,10 @@ body{
     justify-content: center;
     text-align: center;
     align-items: center;
-    border: 5px solid black;
+    border: 3px solid black;
     padding: 5px;
-    padding-right: 20px;
+    padding-right: 5px;
+    margin-left: 7px;
 }
 
 .status_scaling{

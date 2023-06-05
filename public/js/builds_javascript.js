@@ -1,8 +1,10 @@
 
 var array_itens = [];
+var array_itens_encantados = [];
 var array_bosses = [];
 var array_bosses_fraquezas = []
 var items = [];
+
 
 var input_item_nome = document.getElementById('input_item_buscar').value;
 var boss_name_input = document.getElementById('input_boss_name');
@@ -27,7 +29,10 @@ document.addEventListener("DOMContentLoaded", async function item_todos() {
                 each_item.innerHTML = `
                         
                 <br>
-                <h3>${item.name}</h3>
+                <p>
+                    <span class="item_name_style">${item.name}</span> - 
+                    <span class="item_enchatment_style">${item.enchatment}</span>
+                </p>
                 <table class="tabela_itens">
                     <tr>
                         <th>Escala</th>
@@ -66,7 +71,7 @@ function item_por_nome() {
 
     div_itens.innerHTML = '';
 
-    if(document.getElementById('input_item_buscar').value == ''){
+    if(document.querySelector('#input_item_buscar').value == ''){
         for(i = 0; i < items.length; i++){
                 
                 var each_item = document.createElement('div');
@@ -101,14 +106,17 @@ function item_por_nome() {
      }
     }else{
         for(i = 0; i < items.length; i++){
-            if((items[i].name).includes(document.getElementById('input_item_buscar').value)){
+            if((items[i].name).includes(document.querySelector('#input_item_buscar').value)){
                 
                 var each_item = document.createElement('div');
                 each_item.id = "id_each_item";
                 each_item.innerHTML = `
                         
                     <br>
-                    <h3>${items[i].name} - ${items[i].enchatment}</h3>
+                    <p>
+                        <span class="item_name_style">${item[i].name}</span> -
+                        <span class="item_enchatment_style">${item[i].enchatment}</span>
+                    </p>
                     <table class="tabela_itens">
                         <tr>
                             <th>Escala</th>
@@ -135,10 +143,86 @@ function item_por_nome() {
      } }
 }
 
+function item_por_encantamento(encantamento){
+
+    fetch(`/build/item_por_encantamento/${encantamento}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO item_por_encantamento()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                array_itens_encantados = json;
+                console.log(array_itens_encantados);
+
+                mostrar_itens(array_itens_encantados)
+            });
+
+        } else {
+
+            console.log("Houve um erro ao tentar realizar o login!");
+
+            resposta.text().then(texto => {
+            });
+        }
+
+    }).catch(function (erro) {
+    })
+}
+
+function item_por_tipo(){
+
+}
+
+function item_por_atributo(){
+
+}
+
+function mostrar_itens(array) {
+    div_itens.innerHTML = '';
+
+    for(i=0; i < array.length; i++){
+        var each_item = document.createElement('div');
+        each_item.id = "id_each_item";
+        each_item.innerHTML = `
+                
+        <br>
+        <p>
+            <span class="item_name_style">${array[i].name}</span> -
+            <span class="item_enchatment_style">${array[i].enchatment}</span>
+        </p>
+        <table class="tabela_itens">
+            <tr>
+                <th>Escala</th>
+                <th>Dano Físico</th>
+                <th>Dano Mágico</th>
+                <th>Dano Fogo</th>
+                <th>Dano Raio</th>
+                <th>Dano Escuridão</th>
+            </tr>
+            <tr>
+                <td>${array[i].Str}/${array[i].Dex}/${array[i].Int}/${array[i].Faith}/${array[i].Luck}</td>
+                <td>${array[i].Physical}</td>
+                <td>${array[i].Magic}</td>
+                <td>${array[i].Fire}</td>
+                <td>${array[i].Lightning}</td>
+                <td>${array[i].Dark}</td>
+            </tr>
+        </table>
+        `
+        document.getElementById('div_itens').appendChild(each_item);       
+    }
+}
+
 // BOSS 
 
 document.addEventListener("DOMContentLoaded", function boss_todos() {
-    var  response = fetch("/boss/pesquisar", {
+     fetch("/boss/pesquisar", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
