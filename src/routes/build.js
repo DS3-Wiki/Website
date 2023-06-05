@@ -11,12 +11,20 @@ router.get("/tempo-real/:build_inserir", function (req, res) {
     buildController.build_inserir(req, res);
 })
 
-router.get("/item/:item_buscar", function (req, res) {
-    buildController.item_buscar(req, res);
-});
-
 router.get("/item_todos", (req, res) => {
     buildController.item_todos(req, res);
+});
+
+router.get("/item_por_encantamento/:encantamento", function (req, res) {
+    buildController.item_por_encantamento(req, res);
+});
+
+router.get("/item_por_atributo/:atributo", function (req, res) {
+    buildController.item_por_atributo(req, res);
+});
+
+router.get("/item_por_tipo/:tipo", function (req, res) {
+    buildController.item_por_tipo(req, res);
 });
 
 module.exports = router;

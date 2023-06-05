@@ -52,15 +52,53 @@ function item_todos(req, res) {
         console.log(error);
         res.status(500).json(error.sqlMessage);
       });
-  }
+    }
 
-function item_buscar(req, res) {
+function item_por_encantamento(req, res) {
 
-    var item_name = req.body.item_name_server;
+    var encantamento = req.params.encantamento;
 
     console.log('As builds estão sendo buscadas');
 
-    buildModel.item_buscar(item_name).then(function (resultado) {
+    buildModel.item_por_encantamento(encantamento).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar o item.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function item_por_atributo(req, res) {
+
+    var encantamento = req.params.encantamento;
+
+    console.log('As builds estão sendo buscadas');
+
+    buildModel.item_por_encantamento(encantamento).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar o item.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function item_por_tipo(req, res) {
+
+    var encantamento = req.params.encantamento;
+
+    console.log('As builds estão sendo buscadas');
+
+    buildModel.item_por_encantamento(encantamento).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -76,6 +114,8 @@ function item_buscar(req, res) {
 module.exports = {
     build_buscar,
     build_inserir,
-    item_buscar,
-    item_todos
+    item_todos,
+    item_por_encantamento,
+    item_por_atributo,
+    item_por_tipo,
 }

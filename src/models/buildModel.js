@@ -1,8 +1,10 @@
 var database = require("../database/config");
 
+// BUILD
+
 function build_buscar(name) {
 
-    instrucaoSql = ''
+    var instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
@@ -20,7 +22,7 @@ function build_buscar(name) {
 
 function build_inserir(idBuild, perks, name, fkUser) {
 
-    instrucaoSql = ''
+    var instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `    
@@ -38,34 +40,47 @@ function build_inserir(idBuild, perks, name, fkUser) {
     return database.executar(instrucaoSql);
 }
 
+// ITENS
+
 function item_todos() {
 
-    let instrucaoSql = `
+    var instrucaoSql = `
         SELECT * FROM itens;`
 
     return database.executar(instrucaoSql);
 }
 
-function item_buscar(item_name) {
+function item_por_encantamento(encantamento) {
+    
+    var instrucaoSql = `
+        select * from itens where enchatment = '${encantamento}';`
 
-    instrucaoSql = ''
-
-    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `
-        SELECT * FROM build_itens
-            WHERE name LIKE '${item_name}%';`
-    } else {
-        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
-        return
-    }
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
+function item_por_tipo(tipo) {
+
+    var instrucaoSql = `
+        select * from itens where type  = '${tipo}';`
+
+    return database.executar(instrucaoSql);
+}
+
+function item_por_atributo(atributo_escolhido, atributo_sigla) {
+
+    var instrucaoSql = `
+        select * from itens where ${atributo_sigla} = '${atributo_escolhido}';`
+
+    return database.executar(instrucaoSql);
+}
+
+
 
 module.exports = {
     build_buscar,
     build_inserir,
-    item_buscar,
-    item_todos
+    item_todos,
+    item_por_encantamento,
+    item_por_tipo,
+    item_por_atributo,
 }
