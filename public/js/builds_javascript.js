@@ -1,6 +1,6 @@
 
 var array_itens = [];
-var array_itens_encantados = [];
+var array_itens_filtrados = [];
 var array_bosses = [];
 var array_bosses_fraquezas = []
 var items = [];
@@ -14,54 +14,15 @@ var div_itens = document.getElementById('div_itens')
 
 document.addEventListener("DOMContentLoaded", async function item_todos() {
 
-    array_itens = [];
-
     console.log("Estou antes do try")
     try {   
         const response = await fetch("/build/item_todos");
         
-        items  = await response.json();
+        array_itens  = await response.json();
+        array_itens_filtrados = array_itens
 
-        items.forEach((item) => { 
-
-                var each_item = document.createElement('div');
-                each_item.id = "id_each_item";
-                each_item.innerHTML = `
-                        
-                <br>
-                <p>
-                    <span class="item_name_style">${item.name}</span> - 
-                    <span class="item_enchatment_style">${item.enchatment}</span>
-                </p>
-                <table class="tabela_itens">
-                    <tr>
-                        <th>Escala</th>
-                        <th>Dano Físico</th>
-                        <th>Dano Mágico</th>
-                        <th>Dano Fogo</th>
-                        <th>Dano Raio</th>
-                        <th>Dano Escuridão</th>
-                    </tr>
-                    <tr>
-                        <td>${item.Str}/${item.Dex}/${item.Int}/${item.Faith}/${item.Luck}</td>
-                        <td>${item.Physical}</td>
-                        <td>${item.Magic}</td>
-                        <td>${item.Fire}</td>
-                        <td>${item.Lightning}</td>
-                        <td>${item.Dark}</td>
-                    </tr>
-                </table>
-                
-                
-                `
-                document.getElementById('div_itens').appendChild(each_item);             
-    
-        });
-
-        // for(i=0; array_itens.length; i++){
-            
-        // }
-        console.log(array_itens)
+        mostrar_itens(array_itens)
+        
       } catch (error) {
         console.log(error);
       }
@@ -71,55 +32,77 @@ function item_por_nome() {
 
     div_itens.innerHTML = '';
 
-    if(document.querySelector('#input_item_buscar').value == ''){
-        for(i = 0; i < items.length; i++){
+
+    array_itens_filtrados = [];
+
+    if(document.getElementById('input_item_buscar').value == ''){
+        for(i = 0; i < array_itens.length; i++){
                 
-                var each_item = document.createElement('div');
-                each_item.id = "id_each_item";
-                each_item.innerHTML = `
-                        
-                    <br>
-                    <h3>${items[i].name} - ${items[i].enchatment}</h3>
-                    <table class="tabela_itens">
-                        <tr>
-                            <th>Escala</th>
-                            <th>Dano Físico</th>
-                            <th>Dano Mágico</th>
-                            <th>Dano Fogo</th>
-                            <th>Dano Raio</th>
-                            <th>Dano Escuridão</th>
-                        </tr>
-                        <tr>
-                            <td>${items[i].Str}/${items[i].Dex}/${items[i].Int}/${items[i].Faith}/${items[i].Luck}</td>
-                            <td>${items[i].Physical}</td>
-                            <td>${items[i].Magic}</td>
-                            <td>${items[i].Fire}</td>
-                            <td>${items[i].Lightning}</td>
-                            <td>${items[i].Dark}</td>
-                        </tr>
-                    </table>
+            array_itens_filtrados.push(array_itens[i]);
+
+            var each_item = document.createElement('div');
+            each_item.id = "id_each_item";
+            each_item.innerHTML = `
                     
-                    
-                    `
-                div_itens.appendChild(each_item);    
+                <br>   
+                <p>
+                    <span class="item_name_style">${array_itens[i].name}</span> -
+                    <span class="item_enchatment_style">${array_itens[i].enchatment}</span>
+                </p>
+                <table class="tabela_itens">
+                    <tr>
+                        <th>STR</th>
+                        <th>DEX</th>
+                        <th>INT</th>
+                        <th>FTH</th>
+                        <th>LCK</th>
+                        <th>Físico</th>
+                        <th>Mágico</th>
+                        <th>Fogo</th>
+                        <th>Raio</th>
+                        <th>Escuridão</th>
+                    </tr>
+                    <tr>
+                        <td>${array_itens[i].Str}</td>
+                        <td>${array_itens[i].Dex}</td>
+                        <td>${array_itens[i].Int}</td>
+                        <td>${array_itens[i].Faith}</td>
+                        <td>${array_itens[i].Luck}</td>
+                        <td>${array_itens[i].Physical}</td>
+                        <td>${array_itens[i].Magic}</td>
+                        <td>${array_itens[i].Fire}</td>
+                        <td>${array_itens[i].Lightning}</td>
+                        <td>${array_itens[i].Dark}</td>
+                    </tr>
+                </table>
+                
+                
+                `
+            div_itens.appendChild(each_item);    
         
      }
     }else{
-        for(i = 0; i < items.length; i++){
-            if((items[i].name).includes(document.querySelector('#input_item_buscar').value)){
+        for(i = 0; i < array_itens.length; i++){
+            if((array_itens[i].name).includes(document.querySelector('#input_item_buscar').value)){
                 
+                array_itens_filtrados.push(array_itens[i]);
+
                 var each_item = document.createElement('div');
                 each_item.id = "id_each_item";
                 each_item.innerHTML = `
                         
                     <br>
                     <p>
-                        <span class="item_name_style">${item[i].name}</span> -
-                        <span class="item_enchatment_style">${item[i].enchatment}</span>
+                        <span class="item_name_style">${array_itens[i].name}</span> -
+                        <span class="item_enchatment_style">${array_itens[i].enchatment}</span>
                     </p>
                     <table class="tabela_itens">
                         <tr>
-                            <th>Escala</th>
+                            <th>STR</th>
+                            <th>DEX</th>
+                            <th>INT</th>
+                            <th>FTH</th>
+                            <th>LCK</th>
                             <th>Dano Físico</th>
                             <th>Dano Mágico</th>
                             <th>Dano Fogo</th>
@@ -127,15 +110,18 @@ function item_por_nome() {
                             <th>Dano Escuridão</th>
                         </tr>
                         <tr>
-                            <td>${items[i].Str}/${items[i].Dex}/${items[i].Int}/${items[i].Faith}/${items[i].Luck}</td>
-                            <td>${items[i].Physical}</td>
-                            <td>${items[i].Magic}</td>
-                            <td>${items[i].Fire}</td>
-                            <td>${items[i].Lightning}</td>
-                            <td>${items[i].Dark}</td>
+                            <td>${array_itens[i].Str}</td>
+                            <td>${array_itens[i].Dex}</td>
+                            <td>${array_itens[i].Int}</td>
+                            <td>${array_itens[i].Faith}</td>
+                            <td>${array_itens[i].Luck}</td>
+                            <td>${array_itens[i].Physical}</td>
+                            <td>${array_itens[i].Magic}</td>
+                            <td>${array_itens[i].Fire}</td>
+                            <td>${array_itens[i].Lightning}</td>
+                            <td>${array_itens[i].Dark}</td>
                         </tr>
                     </table>
-                    
                     
                     `
                 div_itens.appendChild(each_item);    
@@ -157,10 +143,10 @@ function item_por_encantamento(encantamento){
             console.log(resposta);
 
             resposta.json().then(json => {
-                array_itens_encantados = json;
-                console.log(array_itens_encantados);
+                array_itens_filtrados = json;
+                console.log(array_itens_filtrados);
 
-                mostrar_itens(array_itens_encantados)
+                mostrar_itens(array_itens_filtrados)
             });
 
         } else {
@@ -179,7 +165,34 @@ function item_por_tipo(){
 
 }
 
-function item_por_atributo(){
+function item_por_atributo(atributo){
+    if(atributo == 'Str'){
+        
+        array_itens_filtrados.sort((a, b,) => b.Str - a.Str)
+        mostrar_itens(array_itens_filtrados);
+    }else if (atributo == 'Dex'){
+
+        array_itens_filtrados.sort((a, b,) => b.Dex - a.Dex)
+        mostrar_itens(array_itens_filtrados);
+        
+    }else if (atributo == 'Int'){
+
+        array_itens_filtrados.sort((a, b,) => b.Int - a.Int)
+        mostrar_itens(array_itens_filtrados);
+
+    }
+    else if (atributo == 'Fth'){
+
+        array_itens_filtrados.sort((a, b,) => b.Faith - a.Faith)
+        mostrar_itens(array_itens_filtrados);
+
+    }
+    else if (atributo == 'Lck'){
+
+        array_itens_filtrados.sort((a, b,) => b.Luck - a.Luck)
+        mostrar_itens(array_itens_filtrados);
+
+    }
 
 }
 
@@ -187,6 +200,8 @@ function mostrar_itens(array) {
     div_itens.innerHTML = '';
 
     for(i=0; i < array.length; i++){
+        
+        
         var each_item = document.createElement('div');
         each_item.id = "id_each_item";
         each_item.innerHTML = `
@@ -198,15 +213,23 @@ function mostrar_itens(array) {
         </p>
         <table class="tabela_itens">
             <tr>
-                <th>Escala</th>
-                <th>Dano Físico</th>
-                <th>Dano Mágico</th>
-                <th>Dano Fogo</th>
-                <th>Dano Raio</th>
-                <th>Dano Escuridão</th>
+                <th>STR</th>
+                <th>DEX</th>
+                <th>INT</th>
+                <th>FTH</th>
+                <th>LCK</th>
+                <th>Físico</th>
+                <th>Mágico</th>
+                <th>Fogo</th>
+                <th>Raio</th>
+                <th>Escuridão</th>
             </tr>
             <tr>
-                <td>${array[i].Str}/${array[i].Dex}/${array[i].Int}/${array[i].Faith}/${array[i].Luck}</td>
+                <td>${array[i].Str}</td>
+                <td>${array[i].Dex}</td>
+                <td>${array[i].Int}</td>
+                <td>${array[i].Faith}</td>
+                <td>${array[i].Luck}</td>
                 <td>${array[i].Physical}</td>
                 <td>${array[i].Magic}</td>
                 <td>${array[i].Fire}</td>

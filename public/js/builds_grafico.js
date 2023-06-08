@@ -1,52 +1,67 @@
 
-    var myChart;
+var statisticas = [];
 
-    const ctx = document.getElementById('myChart');
+var myChart_perks;
 
-    myChart = new Chart(ctx, {
-        type: 'radar',
-        data: {
-            labels: ['VGR', 'ATT', 'END', 'VIT', 'STR', 'DEX', 'INT', 'FTH', 'LCK'],
-            datasets: [{
-                label: 'Níveis',
-                data: [20, 12, 30, 60],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+const grafico_perks = document.getElementById('perks');
+
+myChart_perks = new Chart(grafico_perks, {
+    type: 'radar',
+    data: {
+        labels: ['STR', 'DEX', 'INT', 'FTH', 'LCK'],
+        datasets: [{
+            label: 'Níveis',
+            borderColor: '#9B1F1F',
+            data: [],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
             }
         }
-    });
-    function atualizar_grafico() {
+    }
+});
+    function atualizar_grafico_perks() {
 
-        var nivel_total =
-            Number(atributo_Vigor.value) +
-            Number(atributo_Attunement.value) +
-            Number(atributo_Endurence.value) +
-            Number(atributo_Vitality.value) +
-            Number(atributo_Strength.value) +
-            Number(atributo_Dexterity.value) +
-            Number(atributo_Intelligence.value) +
-            Number(atributo_Faith.value) +
-            Number(atributo_Luck.value);
+    statisticas = [
+        atributo_Strength.value,
+        atributo_Dexterity.value,
+        atributo_Intelligence.value,
+        atributo_Faith.value,
+        atributo_Luck.value
+    ];
+    myChart_perks.data.datasets[0].data = statisticas;
+    myChart_perks.update();
+}
 
-        div_nivel_total.innerHTML = nivel_total;
-        var statisticas = [
-            atributo_Vigor.value,
-            atributo_Attunement.value,
-            atributo_Endurence.value,
-            atributo_Vitality.value,
-            atributo_Strength.value,
-            atributo_Dexterity.value,
-            atributo_Intelligence.value,
-            atributo_Faith.value,
-            atributo_Luck.value
+var myChart_encantamento;
 
-        ];
-        myChart.data.datasets[0].data = statisticas;
-        myChart.update();
-    }                    
+const grafico_encantamento = document.getElementById('encantamento');
+
+myChart_encantamento = new Chart(grafico_encantamento, {
+    type: 'radar',
+    data: {
+        labels: ['Físico', 'Mágico', 'Fogo', 'Raio', 'Escuridão'],
+        datasets: [{
+            label: '',
+            borderColor: '#9B1F1F',
+            data: [],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+    function atualizar_grafico_encantamento() {
+
+    myChart_encantamento.data.datasets[0].data = statisticas;
+    myChart_encantamento.update();
+}     

@@ -54,7 +54,7 @@
                         <ul>
                             <li>
                                 <img src="./Assets/img/enchantments/blessed_gem-icon.png">
-                                <a onclick="item_por_encantamento('Bleesed')">Blessed </a>
+                                <a onclick="item_por_encantamento('Blessed')">Blessed </a>
                             </li>
                             <li>
                                 <img src="./Assets/img/enchantments/blood_gem-icon.png">
@@ -124,23 +124,23 @@
                         <ul>
                             <li>
                                 <img src="./Assets/img/stats/Strength_Icon.webp">
-                                <a onclick=""> - Força</a>
+                                <a onclick="item_por_atributo('Str')"> - Força</a>
                             </li>
                             <li>
                                 <img src="./Assets/img/stats/Dexterity_Icon.webp">
-                                <a onclick=""> - Destreza</a>
+                                <a onclick="item_por_atributo('Dex')"> - Destreza</a>
                             </li>
                             <li>
                                 <img src="./Assets/img/stats/Intelligence_Icon.webp">
-                                <a onclick=""> - Inteligência</a>
+                                <a onclick="item_por_atributo('Int')"> - Inteligência</a>
                             </li>
                             <li>
                                 <img src="./Assets/img/stats/Faith_Icon.webp">
-                                <a onclick=""> - Fé</a>
+                                <a onclick="item_por_atributo('Fth')"> - Fé</a>
                             </li>
                             <li>
                                 <img src="./Assets/img/stats/Luck_Icon.webp">
-                                <a onclick=""> - Sorte</a>
+                                <a onclick="item_por_atributo('Lck')"> - Sorte</a>
                             </li>
                         </ul>
                     </div>
@@ -174,59 +174,46 @@
             <div class="build">
 
                 <div class="stats">
-                    <!-- VIGOR -->
-                    <figure>
-                        <img src="./Assets/img/stats/Vigor_Icon.webp">
-                        <input onkeyup="atualizar_grafico()" id="atributo_Vigor">
-                    </figure>
+                    <div>
+                        <!-- STRENGTH  -->
+                        <figure>
+                            <img src="./Assets/img/stats/Strength_Icon.webp">
+                            <input onkeyup="atualizar_grafico_perks()" id="atributo_Strength">
+                        </figure>
+                        <!-- DEXTERITY  -->
+                        <figure>
+                            <img src="./Assets/img/stats/Dexterity_Icon.webp">
+                            <input onkeyup="atualizar_grafico_perks()" id="atributo_Dexterity">
+                        </figure>
+                        <!-- INTELLIGENCE  -->
+                        <figure>
+                            <img src="./Assets/img/stats/Intelligence_Icon.webp">
+                            <input onkeyup="atualizar_grafico_perks()" id="atributo_Intelligence">
+                        </figure>
+                        <!-- FAITH  -->
+                        <figure>
+                            <img src="./Assets/img/stats/Faith_Icon.webp">
+                            <input onkeyup="atualizar_grafico_perks()" id="atributo_Faith">
+                        </figure>
+                        <!-- LUCK  -->
+                        <figure>
+                            <img src="./Assets/img/stats/Luck_Icon.webp">
+                            <input onkeyup="atualizar_grafico_perks()" id="atributo_Luck">
+                        </figure>
+                    </div>
 
-                    <!-- ATTUNEMENT  -->
-                    <figure>
-                        <img src="./Assets/img/stats/Attunement_Icon.webp">
-                        <input onkeyup="atualizar_grafico()" id="atributo_Attunement">
-                    </figure>
-
-                    <!-- ENDURENCE -->
-                    <figure>
-                        <img src="./Assets/img/stats/Endurance_Icon.webp">
-                        <input onkeyup="atualizar_grafico()" id="atributo_Endurence">
-                    </figure>
-
-                    <!-- VITALITY  -->
-                    <figure>
-                        <img src="./Assets/img/stats/Vitality_Icon.webp">
-                        <input onkeyup="atualizar_grafico()" id="atributo_Vitality">
-                    </figure>
-
-                    <!-- STRENGTH  -->
-                    <figure>
-                        <img src="./Assets/img/stats/Strength_Icon.webp">
-                        <input onkeyup="atualizar_grafico()" id="atributo_Strength">
-                    </figure>
-
-                    <!-- DEXTERITY  -->
-                    <figure>
-                        <img src="./Assets/img/stats/Dexterity_Icon.webp">
-                        <input onkeyup="atualizar_grafico()" id="atributo_Dexterity">
-                    </figure>
-
-                    <!-- INTELLIGENCE  -->
-                    <figure>
-                        <img src="./Assets/img/stats/Intelligence_Icon.webp">
-                        <input onkeyup="atualizar_grafico()" id="atributo_Intelligence">
-                    </figure>
-
-                    <!-- FAITH  -->
-                    <figure>
-                        <img src="./Assets/img/stats/Faith_Icon.webp">
-                        <input onkeyup="atualizar_grafico()" id="atributo_Faith">
-                    </figure>
-
-                    <!-- LUCK  -->
-                    <figure>
-                        <img src="./Assets/img/stats/Luck_Icon.webp">
-                        <input onkeyup="atualizar_grafico()" id="atributo_Luck">
-                    </figure>
+                    <!-- GRÁFICO DE JOGADOR DE FUTEBOL PARA A CLASSE  -->
+                    <div class="graficos">
+                        <div class="build_grafico">
+                            <h2>Distribuição dos pontos</h2>
+                            <canvas id="perks"></canvas>
+                        </div>
+                        
+                        <div class="build_grafico">
+                            <h2>Dano Recomendado</h2>
+                            <canvas id="encantamento"></canvas>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="stats_2">
@@ -244,10 +231,6 @@
                         <button onclick="cadastrar_classe()">Cadastrar</button>
                     </div>
 
-                    <!-- GRÁFICO DE JOGADOR DE FUTEBOL PARA A CLASSE  -->
-                    <div class="build_grafico">
-                        <canvas id="myChart"></canvas>
-                    </div>
                 </div>
 
             </div>

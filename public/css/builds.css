@@ -97,10 +97,62 @@ body{
 /* BUILD */
 
 .build {
+    display: flex;
+    flex-direction: column;
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
+}
+
+.graficos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.build_grafico {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 400px;
+}
+
+.build_stats {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.build_stats p {
+    font-family: darksouls;
+    font-size: 35px;
+    font-weight: 900;
+}
+
+.build_stats div{
+    background: #9B1F1F!important;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+}       
+
+.build_stats ul {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+}
+
+.build_stats ul li {
+    list-style: none;
+    display: flex;
+    flex-direction: row-reverse ;
+    align-items: center;
+    margin-bottom: -30px;
+}
+
+.build_stats ul li input {
+    width: 50px;
 }
 
 .stats {
@@ -108,9 +160,14 @@ body{
     flex-direction: column;
 }
 
-.stats input {
-    width: 30px;
-    height: 50px;
+.stats div input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background: #252525;
+    border-style: none;
+    border-radius: 5px;
+    color: #FFBC42;
     font-size: x-large;
 }
 
@@ -160,9 +217,6 @@ body{
     flex-direction: column;
 }
 
-.build_grafico {
-    width: 400px;
-}
  
 /* ANALYTICS */
 
@@ -243,6 +297,11 @@ body{
     box-shadow: 0 0 10px #252525;
 }
 
+.status_scaling{
+    width: 200px;
+    height: 200px;
+}
+
 .status_scaling ul {
     display: flex;
     flex-direction: column;
@@ -256,6 +315,7 @@ body{
 }
 
 .status_scaling ul li a {
+    cursor: pointer;
     font-size: 33px;
     font-family: darksouls;
     color: #f1f1f1;
@@ -341,46 +401,12 @@ body{
     margin-left: 7px;
 }
 
-.status_scaling{
-    width: 200px;
-    height: 200px;
+.tabela_itens tr th{
+    color: yellow;
 }
 
-.build_stats {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.build_stats p {
-    font-family: darksouls;
-    font-size: 35px;
-    font-weight: 900;
-}
-
-.build_stats div{
-    background: #9B1F1F!important;
-    display: flex;
-    flex-direction: column;
-    height: 500px;
-}       
-
-.build_stats ul {
-    display: flex;
-    flex-direction: column;
-    height: 100px;
-}
-
-.build_stats ul li {
-    list-style: none;
-    display: flex;
-    flex-direction: row-reverse ;
-    align-items: center;
-    margin-bottom: -30px;
-}
-
-.build_stats ul li input {
-    width: 50px;
+.tabela_itens tr td, .tabela_itens tr th {
+    border: 1px solid black
 }
 
 /* BOSSES */
