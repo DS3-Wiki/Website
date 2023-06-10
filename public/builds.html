@@ -49,7 +49,7 @@
             <div class="analytics">
 
                 <div class="status">
-                    <p>Tipos de dano:</p>
+                    <p>Tipos de Dano:</p>
                     <div class="status_damage">
                         <ul>
                             <li>
@@ -144,7 +144,48 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                    <p>Tipos de Armas:</p>
+                        <select class="status_weapon_type" onchange="item_por_tipo(this.value)">
+                            <option value=""></option>
+                            <option value="Axe">Axe</option>
+                            <option value="Axe (Paired)">Axe (Paired)</option>
+                            <option value="Greataxe">Greataxe</option>
+                            <option value="Bow">Bow</option>
+                            <option value="Claw">Claw</option>
+                            <option value="Crossbow">Crossbow</option>
+                            <option value="Curved Greatsword">Curved Greatsword</option>
+                            <option value="Curved Sword">Curved Sword</option>
+                            <option value="Curved Sword (Paired)">Curved Sword (Paired)</option>
+                            <option value="Thrusting Sword">Thrusting Sword</option>
+                            <option value="Sword (Paired)">Sword (Paired)</option>
+                            <option value="Straight Sword">Straight Sword</option>
+                            <option value="Greatsword">Greatsword</option>
+                            <option value="Ultra Greatsword">Ultra Greatsword</option>
+                            <option value="Ultra Greatsword (unique)">Ultra Greatsword (unique)</option>
+                            <option value="Dagger">Dagger</option>
+                            <option value="Dagger(Paired)">Dagger(Paired)</option>
+                            <option value="Fist">Fist</option>
+                            <option value="Pyromancy Flame">Pyromancy Flame</option>
+                            <option value="Hammer">Hammer</option>
+                            <option value="Hammer(Paired)">Hammer(Paired)</option>
+                            <option value="Great Hammer">Great Hammer</option>
+                            <option value="Shield">Shield</option>
+                            <option value="Small Shield">Small Shield</option>
+                            <option value="Greatshield">Greatshield</option>
+                            <option value="Halberd">Halberd</option>
+                            <option value="Spear">Spear</option>
+                            <option value="Spear (Paired)">Spear (Paired)</option>
+                            <option value="Katana">Katana</option>
+                            <option value="Katana(Paired)">Katana(Paired)</option>
+                            <option value="Pike">Pike</option>
+                            <option value="Reaper">Reaper</option>
+                            <option value="Sacred Chime">Sacred Chime</option>
+                            <option value="Talisman">Talisman</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Whip">Whip</option>
+                            <option value="Torch">Torch</option>
+                        </select>
+                    </div>
 
                 <div class="itens">
                     <p>Itens recomendados:</p>
@@ -205,12 +246,12 @@
                     <!-- GRÁFICO DE JOGADOR DE FUTEBOL PARA A CLASSE  -->
                     <div class="graficos">
                         <div class="build_grafico">
-                            <h2>Distribuição dos pontos</h2>
+                            <h2>Distribuição dos pontos:</h2>
                             <canvas id="perks"></canvas>
                         </div>
                         
                         <div class="build_grafico">
-                            <h2>Dano Recomendado</h2>
+                            <h2>Dano Recomendado:</h2>
                             <canvas id="encantamento"></canvas>
                         </div>
                     </div>

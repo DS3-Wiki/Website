@@ -35,6 +35,8 @@ myChart_perks = new Chart(grafico_perks, {
     ];
     myChart_perks.data.datasets[0].data = statisticas;
     myChart_perks.update();
+
+    atualizar_grafico_encantamento()
 }
 
 var myChart_encantamento;
@@ -61,7 +63,15 @@ myChart_encantamento = new Chart(grafico_encantamento, {
     }
 });
     function atualizar_grafico_encantamento() {
+    
+        fisico = Number(atributo_Dexterity.value) + Number(atributo_Strength.value);
+        magico = Number(atributo_Intelligence.value);
+        fogo = Number(atributo_Intelligence.value);
+        raio = Number(atributo_Faith.value);
+        escuridao = (Number(atributo_Faith.value)/2) + (Number(atributo_Intelligence.value)/2);
 
-    myChart_encantamento.data.datasets[0].data = statisticas;
+        statisticas_encantamento = [fisico, magico, fogo, raio, escuridao];
+
+    myChart_encantamento.data.datasets[0].data = statisticas_encantamento;
     myChart_encantamento.update();
 }     

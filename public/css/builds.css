@@ -258,6 +258,7 @@ body{
     font-size: 40px;
     font-weight: 800;
     font-family: darksouls;
+    margin-top: 20px;
 }
 
 .status_damage ul {
@@ -379,11 +380,30 @@ body{
     font-family: 'Secular One', sans-serif; 
 }
 
+.item_type_style{
+    font-family: 'Secular One', sans-serif; 
+    font-weight: lighter;
+    color: #252525;
+}
+
 .item_enchatment_style{
     font-size: 31px;
     font-weight: 900;
     font-family: darksouls;
-    color: #5EFF91;
+    color: #27D959;
+}
+
+.status_weapon_type {
+    background: #252525;
+    border-radius: 18px;
+    padding-left: 13px;
+    border-style: none;
+    width: 300px;
+    height: 50px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-size: 26px;
+    color: #f1f1f1;
 }
 
 #id_each_item h3 {
@@ -487,8 +507,8 @@ body{
 #div_bosses_id h3{
     text-align: center;
     font-family: darksouls;
-    font-size: 30px;
-    color: #f1f1f1;
+    color: #FFBC42;
+    font-size: 36px;
 }
 
 #div_bosses_id img{
