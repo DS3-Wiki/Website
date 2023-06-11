@@ -2,14 +2,13 @@ var database = require("../database/config");
 
 // BUILD
 
-function build_buscar(name) {
+function build_todos() {
 
     var instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
-        SELECT * FROM Build
-            WHERE build.name LIKE '${name}%';
+        SELECT * FROM build;
         `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -20,24 +19,13 @@ function build_buscar(name) {
     return database.executar(instrucaoSql);
 }
 
-function build_inserir(idBuild, perks, name, fkUser) {
+function build_inserir(fk_user, name , strength, dexterity, intelligence, faith, luck) {
 
-    var instrucaoSql = ''
-
-    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `    
-        INSERT INTO Build (idBuild, perk, name, fkUser) VALUES
-            (${idBuild}, ${perks}, ${name}, ${fkUser});
-
-        INSERT INTO perks
-        `;
-    } else {
-        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
-        return
-    }
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+    var instrucaoSql = `    
+        INSERT INTO Build (fk_user, name , strength, dexterity, intelligence, faith, luck) VALUES
+            (${fk_user}, ${name}, ${strength}, ${dexterity}, ${intelligence}, ${faith}, ${luck});
+             `; 
+        return database.executar(instrucaoSql)
 }
 
 // ITENS
@@ -77,7 +65,7 @@ function item_por_atributo(atributo_escolhido, atributo_sigla) {
 
 
 module.exports = {
-    build_buscar,
+    build_todos,
     build_inserir,
     item_todos,
     item_por_encantamento,
