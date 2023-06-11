@@ -28,9 +28,13 @@ body{
 /* NAVBAR */
 
 .navbar {
+    z-index: 3;
+    position: fixed;
+    margin-top: -30px;
+    background-color: #25252530;
     box-shadow: 0 7px 15px rgba(0, 0, 0, 0.109);
     width: 100%;
-    height: 75px;
+    height: 105px;
     backdrop-filter: blur(80px);
 }
 
@@ -539,7 +543,7 @@ body{
     height: 500px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
 }
 
 #div_bosses_id h3{
@@ -580,11 +584,11 @@ body{
 }
 
 .modal {
-    display: none;
+    display: flex;
     z-index: 2;
-    position: absolute;
+    position: fixed;
     width: 100%;
-    height: 89%;
+    height: 100vh;
     top: 98px;
     backdrop-filter: blur(25px);
     align-items: center;
@@ -639,6 +643,7 @@ body{
 }
 
 .botao a p{
+    cursor: pointer;
     text-decoration: none;
     margin-top: 10px;
     font-size: 20px;
@@ -650,6 +655,7 @@ body{
 }
 
 .botao button {
+    cursor: pointer;
     z-index: 2;
     border: none;
     width: 200px;

@@ -16,28 +16,28 @@
         <nav class="navbar">
             <ul class="lista_navbar">
                 <li>
-                    <a href="./builds.html">
+                    <a href="./builds.html#analise">
                         Builds
                     </a>
                 </li>
                 <li>
-                    <a href="./chefes.html">
+                    <a href="#boss_lista">
                         Chefes
                     </a>
                 </li>
                 <li class="home_button">
-                    <a href="./index.html">
+                    <a href="./index.html#Home">
                         <img src="./Assets/img/maldicao.png">
                         Souls Builds
                     </a>
                 </li>
                 <li>
-                    <a href="#Somos">
+                    <a href="./index.html#quem_somos">
                         Sobre
                     </a>
                 </li>
                 <li>
-                    <a href="#Footer">
+                    <a href="./index.html#Footer">
                         Contato
                     </a>
                 </li>
@@ -46,7 +46,7 @@
         <section class="section_1">
 
             <!-- ANALYTICS -->
-            <div class="analytics">
+            <div class="analytics" id="analise">
 
                 <div class="status">
                     <p>Tipos de Dano:</p>
@@ -199,7 +199,7 @@
             </div>
 
             <!-- BOSS -->
-            <div class="boss">
+            <div class="boss" id="boss_lista">
 
                 <div class="titulo_chefe">
                     <h3>Todos os Chefes:</h3>
@@ -271,7 +271,7 @@
 
                         <div class="nome_button">
                             <h3>Cadastrar Build:</h3>
-                            <input id="input_nome" placeholder="Nome">
+                            <input id="input_nome_build" placeholder="Nome">
                             <button onclick="build_inserir()">Cadastrar</button>
                         </div>
                 </div>
@@ -315,9 +315,6 @@
                     <div class="email">
                         <p>Senha:</p>
                         <input type="password" id="input_cadastro_password">
-                    </div>
-                    <div class="ds_experience">
-                        <p>Experiência em DS</p>
                     </div>
                     <div class="botao">
                         <button onclick="cadastrar()">Cadastrar</button>

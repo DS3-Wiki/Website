@@ -16,9 +16,6 @@ function login() {
         alert("Todos os campos precisam ser preenchidos")
         return false;
     }
-    else {
-        setInterval(sumirMensagem, 5000)
-    }
 
     console.log("FORM LOGIN: ", emailVar);
     console.log("FORM SENHA: ", passwordVar);
@@ -42,8 +39,8 @@ function login() {
                 console.log(json);
                 console.log(JSON.stringify(json));
 
+                sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_USUARIO = json.id_user;
 
                 setTimeout(function () {
                     alert("Login realizado !!")
@@ -54,11 +51,9 @@ function login() {
 
         } else {
 
-            console.log("Houve um erro ao tentar realizar o login!");
-
+            alert(`Houve um erro ao realizar o login! \n Erro: ${resposta}`)
+            limpar_credenciais()
             resposta.text().then(texto => {
-                console.error(texto);
-                finalizarAguardar(texto);
             });
         }
 
@@ -82,12 +77,9 @@ function cadastrar() {
     var passwordVar = input_cadastro_password.value;
 
     if (nameVar == "" || emailVar == "" || passwordVar == "") {
-        mensagem_erro.innerHTML = "(Todos os campos devem ser preenchidos)";
+        alert("Todos os campos devem ser preenchidos");
 
         return false;
-    }
-    else {
-        setInterval(sumirMensagem, 5000)
     }
 
     // Enviando o valor da nova input
@@ -111,12 +103,27 @@ function cadastrar() {
             alert("Cadastro realizado !!")
             modal_background.style.display = "none";
 
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.NOME_USUARIO = json.nome;
+
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
     }).catch(function (resposta) {
+        alert(`Houve um erro ao tentar realizar o cadastro \n Erro: ${resposta}`)
+        limpar_credenciais()
         console.log(`#ERRO: ${resposta}`);
     });
 
     return false;
+}
+
+function limpar_credenciais(){
+    input_login_email.value = "";
+    input_login_password.value = "";
+
+
+    input_cadastro_name.value = "";
+    input_cadastro_email.value = "";
+    input_cadastro_password.value = "";
 }

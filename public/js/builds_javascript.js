@@ -6,6 +6,9 @@ var array_bosses_fraquezas = [];
 var array_builds = [];
 var items = [];
 
+var EMAIL_USUARIO = sessionStorage.getItem('EMAIL_USUARIO');
+var NOME_USUARIO = sessionStorage.getItem('NOME_USUARIO');
+
 var input_item_nome = document.getElementById('input_item_buscar').value;
 var boss_name_input = document.getElementById('input_boss_name');
 var div_bosses = document.getElementById('div_all_bosses');
@@ -389,23 +392,29 @@ document.addEventListener("DOMContentLoaded", function build_todos() {
 })
 
 function build_inserir() {
-    var build_var = {
-        strength: atributo_Strength.value,
-        dexterity: atributo_Dexterity.value,
-        intelligence: atributo_Intelligence.value,
-        faith: atributo_Faith.value,
-        luck: atributo_Luck.value,
-        id_user
-    }
+        var strengthVar = atributo_Strength.value;
+        var dexterityVar = atributo_Dexterity.value;
+        var intelligenceVar = atributo_Intelligence.value;
+        var faithVar = atributo_Faith.value;
+        var luckVar = atributo_Luck.value;
+        var nomeVar = input_nome_build.value;
 
-    fetch(`/build/inserir/${build_var}`, {
+    fetch(`/build/inserir`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
-        }
+        },
+        body: JSON.stringify({
+            strengthServer :strengthVar,
+            dexterityServer :dexterityVar,
+            intelligenceServer :intelligenceVar,
+            faithServer :faithVar,
+            luckServer :luckVar,
+            nomeServer :nomeVar,
+        })
     }).then(function (resposta) {
         if (resposta.ok) {
-            
+            alert("Sua build foi inserida com sucesso!")
             resposta.json().then(json => {
 
             })
