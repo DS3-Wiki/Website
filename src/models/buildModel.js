@@ -19,11 +19,11 @@ function build_todos() {
     return database.executar(instrucaoSql);
 }
 
-function build_inserir(fk_user, name , strength, dexterity, intelligence, faith, luck) {
+function build_inserir(name , strength, dexterity, intelligence, faith, luck) {
 
     var instrucaoSql = `    
-        INSERT INTO Build (fk_user, name , strength, dexterity, intelligence, faith, luck) VALUES
-            (${fk_user}, ${name}, ${strength}, ${dexterity}, ${intelligence}, ${faith}, ${luck});
+        INSERT INTO Build (name , strength, dexterity, intelligence, faith, luck) VALUES
+            ('${name}', ${strength}, ${dexterity}, ${intelligence}, ${faith}, ${luck});
              `; 
         return database.executar(instrucaoSql)
 }

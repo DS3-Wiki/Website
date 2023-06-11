@@ -19,38 +19,19 @@ function build_todos(req, res) {
     });
 }
 
-function build_buscar(req, res) {
-
-    var name = req.body.name;
-
-    console.log('As builds estão sendo buscadas');
-
-    buildModel.build_buscar(name).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as builds.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
 function build_inserir(req, res) {
     
-    var fk_user = req.params.fk_user;
-    var name = req.params.name;
-    var strength = req.params.strength;
-    var dexterity = req.params.dexterity;
-    var intelligence = req.params.intelligence;
-    var faith = req.params.faith;
-    var luck = req.params.luck;
+
+    var name = req.body.nomeServer;
+    var strength = req.body.strengthServer;
+    var dexterity = req.body.dexterityServer;
+    var intelligence = req.body.intelligenceServer;
+    var faith = req.body.faithServer;
+    var luck = req.body.luckServer;
 
     console.log(`As builds estão sendo inseridas`);
 
-    buildModel.build_inserir(fk_user, name , strength, dexterity, intelligence, faith, luck).then(function (resultado) {
+    buildModel.build_inserir(name , strength, dexterity, intelligence, faith, luck).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

@@ -9,7 +9,7 @@ router.get("/buscar_todos", function (req, res) {
     buildController.build_todos(req, res);
 });
 
-router.get("/inserir", function (req, res) {
+router.post("/inserir", function (req, res) {
     buildController.build_inserir(req, res);
 })
 
