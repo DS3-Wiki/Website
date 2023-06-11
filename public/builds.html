@@ -144,6 +144,7 @@
                             </li>
                         </ul>
                     </div>
+
                     <p>Tipos de Armas:</p>
                         <select class="status_weapon_type" onchange="item_por_tipo(this.value)">
                             <option value=""></option>
@@ -200,13 +201,15 @@
             <!-- BOSS -->
             <div class="boss">
 
-                <div>
+                <div class="titulo_chefe">
                     <h3>Todos os Chefes:</h3>
                     <input onkeydown="boss_pesquisar()" id="input_boss_buscar">
                 </div>
 
-                <div class="boss_list" id="div_all_bosses">
-                    <!-- Filtrar o nome do chefe e trazer as informações dele direto do banco de dados -->
+                <div class="wruapper">
+                    <div class="boss_list" id="div_all_bosses">
+                        <!-- Filtrar o nome do chefe e trazer as informações dele direto do banco de dados -->
+                    </div>
                 </div>
 
             </div>
@@ -259,19 +262,18 @@
 
                 <div class="stats_2">
 
-                    <div>
-                        <h3>Builds Cadastradas:</h3>
-                        <input>
-                        <h3>Nível:</h3>
-                        <div id="div_nivel_total">
-                        </div>
-                    </div>
-
                     <div class="nome_button">
-                        <input id="input_nome" placeholder="Nome">
-                        <button onclick="cadastrar_classe()">Cadastrar</button>
-                    </div>
+                            <h3>Buscar Builds:</h3>
+                            <select class="buscar_builds_select" id="lista_builds" onchange="selecionar_build(this.value)">
+                                <!-- Lista de dados vinda do banco -->
+                            </select>
+                        </div>
 
+                        <div class="nome_button">
+                            <h3>Cadastrar Build:</h3>
+                            <input id="input_nome" placeholder="Nome">
+                            <button onclick="build_inserir()">Cadastrar</button>
+                        </div>
                 </div>
 
             </div>

@@ -74,4 +74,5 @@ myChart_encantamento = new Chart(grafico_encantamento, {
 
     myChart_encantamento.data.datasets[0].data = statisticas_encantamento;
     myChart_encantamento.update();
-}     
+}
+

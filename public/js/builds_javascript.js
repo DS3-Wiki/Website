@@ -2,20 +2,20 @@
 var array_itens = [];
 var array_itens_filtrados = [];
 var array_bosses = [];
-var array_bosses_fraquezas = []
+var array_bosses_fraquezas = [];
+var array_builds = [];
 var items = [];
 
 var input_item_nome = document.getElementById('input_item_buscar').value;
 var boss_name_input = document.getElementById('input_boss_name');
 var div_bosses = document.getElementById('div_all_bosses');
 var div_itens = document.getElementById('div_itens')
-
+var select_builds = document.getElementById('lista_builds');
 
 //  ITEM 
 
 document.addEventListener("DOMContentLoaded", async function item_todos() {
 
-    console.log("Estou antes do try")
     try {
         const response = await fetch("/build/item_todos");
 
@@ -96,14 +96,11 @@ function item_por_encantamento(encantamento) {
             "Content-Type": "application/json"
         },
     }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO item_por_encantamento()!")
 
         if (resposta.ok) {
-            console.log(resposta);
 
             resposta.json().then(json => {
                 array_itens_filtrados = json;
-                console.log(array_itens_filtrados);
 
                 mostrar_itens(array_itens_filtrados)
             });
@@ -121,7 +118,6 @@ function item_por_encantamento(encantamento) {
 }
 
 function item_por_tipo(weapon_type) {
-    console.log('estou no item_por_tipo()');
 
     var array_weapons_type = [];
 
@@ -235,13 +231,10 @@ document.addEventListener("DOMContentLoaded", function bosses_fraquezas() {
             "Content-Type": "application/json"
         },
     }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO bosses_fraquezas!")
-        console.log(resposta);
         if (resposta.ok) {
-            console.log(resposta);
+
             resposta.json().then(json => {
                 array_bosses_fraquezas = json
-                console.log(array_bosses_fraquezas);
 
             })
         }
@@ -255,18 +248,11 @@ document.addEventListener("DOMContentLoaded", function boss_todos() {
             "Content-Type": "application/json"
         },
     }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO boss_pesquisar!")
-        console.log(resposta);
         if (resposta.ok) {
-            console.log(resposta);
 
             resposta.json().then(json => {
-                console.log(json);
-
                 array_bosses = json;
 
-                console.log(array_bosses_fraquezas);
-                console.log('Passei pelo bosses_fraquezas()')
                 mostrar_bosses();
             })
         }
@@ -359,7 +345,7 @@ function mostrar_bosses() {
         each_boss.id = "div_bosses_id";
 
         each_boss.innerHTML = `
-            <div>
+            <div class="perfil_vilao">
                 <h3> ${array_bosses[i].name}</h3>
                 <img src="${array_bosses[i].src}">
             </div>
@@ -382,23 +368,80 @@ function mostrar_bosses() {
     }
 }
 
-function cadastrar_classe() {
-    var build = {
-        nome: input_nome.value,
-        atributos: {
-            Vigor: atributo_Vigor.value,
-            Attunement: atributo_Attunement.value,
-            Endurence: atributo_Endurence.value,
-            Vitality: atributo_Vitality.value,
-            Strength: atributo_Strength.value,
-            Dexterity: atributo_Dexterity.value,
-            Intelligence: atributo_Intelligence.value,
-            Faith: atributo_Faith.value,
-            Luck: atributo_Luck.value
+// CLASSE
+
+document.addEventListener("DOMContentLoaded", function build_todos() {
+    fetch("/build/buscar_todos", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    }).then(function (resposta) {
+        if (resposta.ok) {
+
+            resposta.json().then(json => {
+
+                array_builds = json;
+                mostrar_builds_select(array_builds);
+            })
         }
+    })
+})
+
+function build_inserir() {
+    var build_var = {
+        strength: atributo_Strength.value,
+        dexterity: atributo_Dexterity.value,
+        intelligence: atributo_Intelligence.value,
+        faith: atributo_Faith.value,
+        luck: atributo_Luck.value,
+        id_user
     }
 
-    classes.push(build)
+    fetch(`/build/inserir/${build_var}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            
+            resposta.json().then(json => {
+
+            })
+        }
+    })
 }
+
+function selecionar_build(build_selecionado){
+    for(i=0; i < array_builds.length; i++) {
+        if(array_builds[i].name == build_selecionado) {
+            atributo_Strength.value = array_builds[i].strength;
+            atributo_Dexterity.value = array_builds[i].dexterity;
+            atributo_Intelligence.value = array_builds[i].intelligence;
+            atributo_Faith.value = array_builds[i].faith;
+            atributo_Luck.value = array_builds[i].luck;
+
+            atualizar_grafico_perks();
+            return 
+        }
+    }
+}
+
+function mostrar_builds_select(array){
+
+    for(i=0; i < array.length; i++){
+        
+        var each_build = document.createElement('option');
+        each_build.id = "option_builds";
+        each_build.value = `${array[i].name}`;
+
+        each_build.innerHTML = `
+            ${array[i].name}
+        `
+        document.getElementById('lista_builds').appendChild(each_build);
+    }
+}
+
 
 
