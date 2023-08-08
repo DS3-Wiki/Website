@@ -12,6 +12,11 @@
     font-family: 'Secular One', sans-serif; 
 }
 
+h1 {
+    font-family: darksouls;
+    font-size: 40px;
+}
+
 body{
     background: #252525;
 }
@@ -82,16 +87,33 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    height: 100vh;
     grid-column-gap: 2vh;
+    height: 100vh;
 }
 
 .section_1 div {
-    margin-top: 10px;
     display: flex;
-    background: #FFBC42;
     border-radius: 15px;
 }   
+
+.analytics {
+    margin-top: 100px;
+    background: #FFBC42;
+}
+
+.status{
+    background: #FFBC42;
+}
+
+.build{
+    margin-top: 50px;
+    background: #FFBC42;
+}
+
+.boss{
+    margin-top: 50px;
+    background: #FFBC42;
+}
 
 .section_1 div input {
     height: 30px;
@@ -229,6 +251,27 @@ body{
 .stats_2 h3{
     font-size: 30px;
     font-family: darksouls;
+}
+
+.item_escolhido{
+    margin-top: 3vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.item_escolhido_div {
+    width: 90%;
+    height: 20vh;
+    background: #9B1F1F;
+    flex-direction: column;
+    color: #f1f1f1;
+    font-size: 22px;
+    padding-left: 10px;
+}
+
+.item_escolhido_div div {
+    align-items: center;
 }
 
 .buscar_builds_select{
@@ -380,7 +423,6 @@ body{
 }
 
 .itens p{
-    height: 38px;
     font-size: 24px;
     font-weight: 800;
     font-family: darksouls;
@@ -392,10 +434,25 @@ body{
     flex-direction: row;
 }
 
+#escolher_item{
+    cursor: pointer;
+}
+
+#escolher_item:hover {
+    color: #FFBC42;
+    text-shadow: 1px 1px 10px #FFBC42;
+}
+
+#escolher_item:active {
+    color: #FFBC42;
+    text-shadow: 1px 1px 10px #FFBC42;
+}
+
 #id_each_item {
     display: flex;
     flex-direction: column;
     background: #9B1F1F;
+    margin-top: 30px;
     width: 100%;
     height: 90px;
     padding: 10px;
@@ -417,6 +474,23 @@ body{
     font-weight: 900;
     font-family: darksouls;
     color: #27D959;
+}
+
+.item_name_style_escolhido{
+    color: #f1f1f1;
+    font-weight: bolder;
+    font-size: 25px;
+}
+.item_type_style_escolhido{
+    color: #252525;
+    font-weight: bolder;
+    font-size: 25px;
+}
+.item_enchatment_style_escolhido{
+    font-weight: 900;
+    font-family: darksouls;
+    color: #27D959;
+    font-size: 28px;
 }
 
 .status_weapon_type {
@@ -441,7 +515,7 @@ body{
     justify-content: center;
     text-align: center;
     align-items: center;
-    border: 3px solid black;
+    border: 3px solid #252525;
     padding: 5px;
     padding-right: 5px;
     margin-left: 7px;
@@ -460,14 +534,6 @@ body{
 .boss{
     flex-direction: column;
 }
-
-/* .boss div {
-    align-items: center;
-    justify-content: center;
-    font-family: darksouls;
-    color: #9B1F1F;
-    font-size: 40px;
-} */
 
 .titulo_chefe{
     padding-left: 40px;
@@ -502,7 +568,7 @@ body{
 }
 
 .wruapper{
-    height: 800px;
+    height: 90vh;
     width: 95%;
 }
 
@@ -607,14 +673,6 @@ body{
     box-shadow: 20px 20px 10px #252525;
 }
 
-.animar_to_login {
-    animation: to_login 2s linear;
-}
-
-.animar_to_cadastro {
-    animation: to_cadastro 2s linear;
-}
-
 .login p, .login div p {
     margin-left: 50px;
     margin-top: 39px;
@@ -642,19 +700,69 @@ body{
     height: 30px;
 }
 
-.botao a p{
-    cursor: pointer;
-    text-decoration: none;
-    margin-top: 10px;
-    font-size: 20px;
-}
-
 .login div {
     margin-top: 30px;
     height: auto;
 }
 
-.botao button {
+.login_cadastro_display_none{
+    display: none;
+}
+
+.to_cadastro {
+    animation: animate_to_cadastro ease 1.2s;
+}
+
+.height_to_cadastro{
+    animation: animate_modal_height_to_cadastro ease 1s;
+}
+
+.to_login {
+    animation: animate_to_login ease 1.2s;
+}
+
+.height_to_login{
+    animation: animate_modal_height_to_login ease 1s;
+}
+
+@keyframes animate_to_cadastro {
+    0%{
+        margin-left: 0px;
+    }
+    100%{
+        margin-left: -397px;
+    }
+}
+
+@keyframes animate_modal_height_to_cadastro{
+    0%{
+        height: 510px;
+    }
+    100%{
+        height: 610px;
+    }
+}
+
+@keyframes animate_to_login {
+    0%{
+        margin-left: -397px;
+    }
+    100%{
+        margin-left: 0px;
+    }
+}
+
+
+@keyframes animate_modal_height_to_login{
+    0%{
+        height: 610px;
+    }
+    100%{
+        height: 510px;
+    }
+}
+
+.botao_modal button {
     cursor: pointer;
     z-index: 2;
     border: none;
@@ -662,12 +770,17 @@ body{
     height: 50px;
     margin-left: 50px;
     border-radius: 20px;
-    font-size: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #252525;
+    font-family: darksouls;
     background: #FFBC42;
+    transition: .2s ease;
 }
 
-.botao button :hover{
-    transform: scale(1.1);
+.botao_modal button:hover{
+    transform: scale(1.05);
+    box-shadow: 10px 10px 1px #252525;
 }
 
 .cadastro{
@@ -701,30 +814,21 @@ body{
     height: 30px;
 }
 
-.botao a p{
-    text-decoration: none;
-    margin-top: 10px;
-    font-size: 20px;
-}
-
 .cadastro div {
     margin-top: 30px;
     height: auto;
 }
 
-.botao button {
-    z-index: 2;
-    border: none;
-    width: 200px;
-    height: 50px;
-    margin-left: 50px;
-    border-radius: 20px;
-    font-size: 20px;
-    background: #FFBC42;
+#modal_changer p{
+    font-size: 23px;
+    cursor: pointer;
 }
 
-.botao button :hover{
-    text-shadow: 0px 0px 15px #FFBC42;;
+#titulo {
+    text-align: center;
+    font-size: 50px;
+    color: #FFBC42;
+    text-shadow: 5px 5px 3px #252525;
 }
 
 

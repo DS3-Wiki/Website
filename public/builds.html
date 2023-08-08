@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/builds.css">
     <link rel="shortcut icon" href="./Assets/img/pngwing.com.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -43,6 +44,7 @@
                 </li>
             </ul>
         </nav>
+
         <section class="section_1">
 
             <!-- ANALYTICS -->
@@ -144,57 +146,57 @@
                             </li>
                         </ul>
                     </div>
-
-                    <p>Tipos de Armas:</p>
-                        <select class="status_weapon_type" onchange="item_por_tipo(this.value)">
-                            <option value=""></option>
-                            <option value="Axe">Axe</option>
-                            <option value="Axe (Paired)">Axe (Paired)</option>
-                            <option value="Greataxe">Greataxe</option>
-                            <option value="Bow">Bow</option>
-                            <option value="Claw">Claw</option>
-                            <option value="Crossbow">Crossbow</option>
-                            <option value="Curved Greatsword">Curved Greatsword</option>
-                            <option value="Curved Sword">Curved Sword</option>
-                            <option value="Curved Sword (Paired)">Curved Sword (Paired)</option>
-                            <option value="Thrusting Sword">Thrusting Sword</option>
-                            <option value="Sword (Paired)">Sword (Paired)</option>
-                            <option value="Straight Sword">Straight Sword</option>
-                            <option value="Greatsword">Greatsword</option>
-                            <option value="Ultra Greatsword">Ultra Greatsword</option>
-                            <option value="Ultra Greatsword (unique)">Ultra Greatsword (unique)</option>
-                            <option value="Dagger">Dagger</option>
-                            <option value="Dagger(Paired)">Dagger(Paired)</option>
-                            <option value="Fist">Fist</option>
-                            <option value="Pyromancy Flame">Pyromancy Flame</option>
-                            <option value="Hammer">Hammer</option>
-                            <option value="Hammer(Paired)">Hammer(Paired)</option>
-                            <option value="Great Hammer">Great Hammer</option>
-                            <option value="Shield">Shield</option>
-                            <option value="Small Shield">Small Shield</option>
-                            <option value="Greatshield">Greatshield</option>
-                            <option value="Halberd">Halberd</option>
-                            <option value="Spear">Spear</option>
-                            <option value="Spear (Paired)">Spear (Paired)</option>
-                            <option value="Katana">Katana</option>
-                            <option value="Katana(Paired)">Katana(Paired)</option>
-                            <option value="Pike">Pike</option>
-                            <option value="Reaper">Reaper</option>
-                            <option value="Sacred Chime">Sacred Chime</option>
-                            <option value="Talisman">Talisman</option>
-                            <option value="Staff">Staff</option>
-                            <option value="Whip">Whip</option>
-                            <option value="Torch">Torch</option>
-                        </select>
-                    </div>
+                 </div>
 
                 <div class="itens">
-                    <p>Itens recomendados:</p>
+                    <h1>Lista de itens:</h1>
 
                     <input onkeydown="item_por_nome()" id="input_item_buscar">
 
                     <div class="itens_list" id="div_itens">
                     </div>
+
+                    <h1>Tipos de Armas:</h1>
+                    <select class="status_weapon_type" onchange="item_por_tipo(this.value)">
+                        <option value=""></option>
+                        <option value="Axe">Axe</option>
+                        <option value="Axe (Paired)">Axe (Paired)</option>
+                        <option value="Greataxe">Greataxe</option>
+                        <option value="Bow">Bow</option>
+                        <option value="Claw">Claw</option>
+                        <option value="Crossbow">Crossbow</option>
+                        <option value="Curved Greatsword">Curved Greatsword</option>
+                        <option value="Curved Sword">Curved Sword</option>
+                        <option value="Curved Sword (Paired)">Curved Sword (Paired)</option>
+                        <option value="Thrusting Sword">Thrusting Sword</option>
+                        <option value="Sword (Paired)">Sword (Paired)</option>
+                        <option value="Straight Sword">Straight Sword</option>
+                        <option value="Greatsword">Greatsword</option>
+                        <option value="Ultra Greatsword">Ultra Greatsword</option>
+                        <option value="Ultra Greatsword (unique)">Ultra Greatsword (unique)</option>
+                        <option value="Dagger">Dagger</option>
+                        <option value="Dagger(Paired)">Dagger(Paired)</option>
+                        <option value="Fist">Fist</option>
+                        <option value="Pyromancy Flame">Pyromancy Flame</option>
+                        <option value="Hammer">Hammer</option>
+                        <option value="Hammer(Paired)">Hammer(Paired)</option>
+                        <option value="Great Hammer">Great Hammer</option>
+                        <option value="Shield">Shield</option>
+                        <option value="Small Shield">Small Shield</option>
+                        <option value="Greatshield">Greatshield</option>
+                        <option value="Halberd">Halberd</option>
+                        <option value="Spear">Spear</option>
+                        <option value="Spear (Paired)">Spear (Paired)</option>
+                        <option value="Katana">Katana</option>
+                        <option value="Katana(Paired)">Katana(Paired)</option>
+                        <option value="Pike">Pike</option>
+                        <option value="Reaper">Reaper</option>
+                        <option value="Sacred Chime">Sacred Chime</option>
+                        <option value="Talisman">Talisman</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Whip">Whip</option>
+                        <option value="Torch">Torch</option>
+                    </select>
                 </div>
             </div>
 
@@ -211,7 +213,6 @@
                         <!-- Filtrar o nome do chefe e trazer as informações dele direto do banco de dados -->
                     </div>
                 </div>
-
             </div>
 
             <!-- BUILDS -->
@@ -275,53 +276,61 @@
                             <button onclick="build_inserir()">Cadastrar</button>
                         </div>
                 </div>
+                
+                <div class="item_escolhido">
 
+                    <h1>Item da build:</h1>
+                    
+                    <div class="item_escolhido_div" id="item_escolhido">
+
+                    </div>
+                </div>
             </div>
 
         </section>
+        
         <!-- MODAL  -->
-
         <div class="modal" id="modal_background">
             <div class="modal_login_cadastro" id="modal">
                 <!-- MODAL LOGIN -->
                 <div class="login" id="login">
-                    <p>Login</p>
+                    <p id="titulo">Login</p>
                     <div class="email">
-                        <p>Email</p>
+                        <p>Email:</p>
                         <input id="input_login_email">
                     </div>
                     <div class="senha">
                         <p>Senha:</p>
                         <input type="password" id="input_login_password">
                     </div>
-                    <div class="botao">
+                    <div class="botao_modal">
                         <button onclick="login()">Login</button>
-                        <a onclick="modal_to_cadastro()">
-                            <p>Ainda não possuo cadastro</p>
-                        </a>
                     </div>
+                    <a id="modal_changer" onclick="modal_to_cadastro()">
+                        <p>Ainda não possuo cadastro</p>
+                    </a>
                 </div>
                 <!-- MODAL CADASTRO -->
                 <div class="cadastro">
-                    <p>Cadastro</p>
+                    <p id="titulo">Cadastro</p>
                     <div class="email">
-                        <p>Nome</p>
+                        <p>Nome:</p>
                         <input id="input_cadastro_name">
                     </div>
                     <div class="email">
-                        <p>Email</p>
+                        <p>Email:</p>
                         <input id="input_cadastro_email">
                     </div>
                     <div class="email">
                         <p>Senha:</p>
                         <input type="password" id="input_cadastro_password">
                     </div>
-                    <div class="botao">
+                    <div class="botao_modal">
                         <button onclick="cadastrar()">Cadastrar</button>
-                        <a onclick="modal_to_login()">
-                            <p>Quero fazer o login</p>
-                        </a>
                     </div>
+                    <a id="modal_changer" onclick="modal_to_login()">
+                        <p>Quero fazer o login</p>
+                    </a>
                 </div>
             </div>
         </div>

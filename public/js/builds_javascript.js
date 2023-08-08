@@ -1,10 +1,11 @@
-
+var id_itemVar = 0;
 var array_itens = [];
 var array_itens_filtrados = [];
+
 var array_bosses = [];
 var array_bosses_fraquezas = [];
+
 var array_builds = [];
-var items = [];
 
 var EMAIL_USUARIO = sessionStorage.getItem('EMAIL_USUARIO');
 var NOME_USUARIO = sessionStorage.getItem('NOME_USUARIO');
@@ -14,6 +15,8 @@ var boss_name_input = document.getElementById('input_boss_name');
 var div_bosses = document.getElementById('div_all_bosses');
 var div_itens = document.getElementById('div_itens')
 var select_builds = document.getElementById('lista_builds');
+var item_escolhido_div = document.getElementById('item_escolhido');
+
 
 //  ITEM 
 
@@ -128,6 +131,7 @@ function item_por_tipo(weapon_type) {
         mostrar_itens(array_itens_filtrados);
     }
     else{
+
         for(i=0; i < array_itens_filtrados.length; i++){
 
             if(array_itens_filtrados[i].type == undefined) {
@@ -135,20 +139,24 @@ function item_por_tipo(weapon_type) {
             }
 
             else if(weapon_type == array_itens_filtrados[i].type){
+
                 array_weapons_type.push(array_itens_filtrados[i])
             }
             
         }
+        array_itens_filtrados = array_weapons_type
         console.log(array_weapons_type);
         mostrar_itens(array_weapons_type)
     }
 }
 
 function item_por_atributo(atributo) {
+
     if (atributo == 'Str') {
 
         array_itens_filtrados.sort((a, b,) => b.Str - a.Str)
         mostrar_itens(array_itens_filtrados);
+
     } else if (atributo == 'Dex') {
 
         array_itens_filtrados.sort((a, b,) => b.Dex - a.Dex)
@@ -176,53 +184,115 @@ function item_por_atributo(atributo) {
 }
 
 function mostrar_itens(array) {
+    console.time();
     div_itens.innerHTML = '';
+
+    if(array == undefined){
+        return
+    }
 
     for (var i = 0; i < array.length; i++) {
 
-        if(array[i] == undefined){
-            continue
-        }
+       
         var each_item = document.createElement('div');
         each_item.id = "id_each_item";
+        
         each_item.innerHTML = `
                 
-        <br>
-        <p>
-            <span class="item_name_style">${array[i].name}</span> -
-            <span class="item_type_style">${array[i].type}</span> -
-            <span class="item_enchatment_style">${array[i].enchatment}</span>
-        </p>
-        <table class="tabela_itens">
-            <tr>
-                <th>STR</th>
-                <th>DEX</th>
-                <th>INT</th>
-                <th>FTH</th>
-                <th>LCK</th>
-                <th>Físico</th>
-                <th>Mágico</th>
-                <th>Fogo</th>
-                <th>Raio</th>
-                <th>Escuridão</th>
-            </tr>
-            <tr>
-                <td>${array[i].Str}</td>
-                <td>${array[i].Dex}</td>
-                <td>${array[i].Int}</td>
-                <td>${array[i].Faith}</td>
-                <td>${array[i].Luck}</td>
-                <td>${array[i].Physical}</td>
-                <td>${array[i].Magic}</td>
-                <td>${array[i].Fire}</td>
-                <td>${array[i].Lightning}</td>
-                <td>${array[i].Dark}</td>
-            </tr>
-        </table>
-        `
+            <br>
+            <p>
+                <a id="escolher_item" onclick="item_escolher(${array[i].id_item})">
+                    <span class="item_name_style">${array[i].name}</span>
+                </a>
+                -
+                <span class="item_type_style">${array[i].type}</span> -
+                <span class="item_enchatment_style">${array[i].enchatment}</span>
+            </p>
+            
+            <table class="tabela_itens">
+                <tr>
+                    <th>STR</th>
+                    <th>DEX</th>
+                    <th>INT</th>
+                    <th>FTH</th>
+                    <th>LCK</th>
+                    <th>Físico</th>
+                    <th>Mágico</th>
+                    <th>Fogo</th>
+                    <th>Raio</th>
+                    <th>Escuridão</th>
+                </tr>
+                <tr>
+                    <td>${array[i].Str}</td>
+                    <td>${array[i].Dex}</td>
+                    <td>${array[i].Int}</td>
+                    <td>${array[i].Faith}</td>
+                    <td>${array[i].Luck}</td>
+                    <td>${array[i].Physical}</td>
+                    <td>${array[i].Magic}</td>
+                    <td>${array[i].Fire}</td>
+                    <td>${array[i].Lightning}</td>
+                    <td>${array[i].Dark}</td>
+                </tr>
+            </table>
+            `
         document.getElementById('div_itens').appendChild(each_item);
     }
+    console.timeEnd();
 }
+
+function item_escolher(id_item){
+    for(i=0; i < array_itens.length; i++) {
+        if(id_item == array_itens[i].id_item){
+            id_itemVar = array_itens[i].id_item;
+        
+            item_escolhido_div.innerHTML = `
+                    
+            <br>
+                <div>
+                    <span class="item_name_style_escolhido">${array_itens[i].name}</span> 
+                    <span class="item_type_style_escolhido"> - ${array_itens[i].type} -</span> 
+                    <span class="item_enchatment_style_escolhido">${array_itens[i].enchatment}</span>
+                </div>
+            
+            <table class="tabela_itens">
+                <tr>
+                    <th>STR</th>
+                    <th>DEX</th>
+                    <th>INT</th>
+                    <th>FTH</th>
+                    <th>LCK</th>
+                    <th>Físico</th>
+                    <th>Mágico</th>
+                    <th>Fogo</th>
+                    <th>Raio</th>
+                    <th>Escuridão</th>
+                </tr>
+                <tr>
+                    <td>${array_itens[i].Str}</td>
+                    <td>${array_itens[i].Dex}</td>
+                    <td>${array_itens[i].Int}</td>
+                    <td>${array_itens[i].Faith}</td>
+                    <td>${array_itens[i].Luck}</td>
+                    <td>${array_itens[i].Physical}</td>
+                    <td>${array_itens[i].Magic}</td>
+                    <td>${array_itens[i].Fire}</td>
+                    <td>${array_itens[i].Lightning}</td>
+                    <td>${array_itens[i].Dark}</td>
+                </tr>
+            </table>
+            `
+            atualizar_grafico_encantamento_arma(id_itemVar)
+            return
+        }
+    }
+    
+}
+
+function teste(){
+    alert("testando")
+}
+
 
 // BOSS 
 
@@ -259,7 +329,7 @@ document.addEventListener("DOMContentLoaded", function boss_todos() {
                 mostrar_bosses();
             })
         }
-    })
+    })  
 })
 
 function boss_pesquisar() {
@@ -320,11 +390,9 @@ function boss_pesquisar() {
 }
 
 function mostrar_bosses() {
-
     div_bosses.innerHTML = '';
 
     for (i = 0; i < array_bosses.length; i++) {
-
         var id_boss = array_bosses[i].id_boss;
 
         var weakness = [];
@@ -371,9 +439,13 @@ function mostrar_bosses() {
     }
 }
 
+
 // CLASSE
 
-document.addEventListener("DOMContentLoaded", function build_todos() {
+document.addEventListener("DOMContentLoaded", build_todos())
+
+function build_todos() {
+    array_builds = []
     fetch("/build/buscar_todos", {
         method: "GET",
         headers: {
@@ -389,7 +461,7 @@ document.addEventListener("DOMContentLoaded", function build_todos() {
             })
         }
     })
-})
+}
 
 function build_inserir() {
         var strengthVar = atributo_Strength.value;
@@ -411,13 +483,20 @@ function build_inserir() {
             faithServer :faithVar,
             luckServer :luckVar,
             nomeServer :nomeVar,
+            id_itemServer : id_itemVar,
         })
     }).then(function (resposta) {
         if (resposta.ok) {
-            alert("Sua build foi inserida com sucesso!")
-            resposta.json().then(json => {
-
-            })
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor: '#FFBC42',
+                title: 'Build inserida',
+                showConfirmButton: false,
+                timer: 1000,
+                background: '#252525', 
+              })
+            build_todos()
         }
     })
 }
@@ -432,20 +511,22 @@ function selecionar_build(build_selecionado){
             atributo_Luck.value = array_builds[i].luck;
 
             atualizar_grafico_perks();
+            item_escolher(array_builds[i].fk_item)
             return 
         }
     }
 }
 
 function mostrar_builds_select(array){
+    select_builds.innerHTML = ""
 
     for(i=0; i < array.length; i++){
-        
         var each_build = document.createElement('option');
+        
         each_build.id = "option_builds";
         each_build.value = `${array[i].name}`;
 
-        each_build.innerHTML = `
+        each_build.innerHTML += `
             ${array[i].name}
         `
         document.getElementById('lista_builds').appendChild(each_build);

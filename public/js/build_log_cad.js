@@ -1,10 +1,35 @@
 var tela_login = document.getElementById("login");
+var tela_cadastro = document.getElementById("cadastro");
 var modal = document.getElementById("modal");
 var modal_background = document.getElementById("modal_background")
 
 function modal_to_login() {
-    tela_login.style.marginLeft = "0px";
+    tela_login.classList.remove('to_cadastro')
+    tela_login.classList.add('to_login')
+
+    // tela_cadastro.classList.add("login_cadastro_display_none")
+    // tela_login.classList.remove("login_cadastro_display_none")   
+
+    modal.classList.remove('height_to_cadastro')
+    modal.classList.add('height_to_login')
+
+    tela_login.style.marginLeft = "0px"
     modal.style.height = "510px";
+}
+
+function modal_to_cadastro() {
+    tela_login.classList.remove('to_login')
+    tela_login.classList.add('to_cadastro')
+
+    // tela_login.classList.add('login_cadastro_display_none')
+    // tela_cadastro.classList.remove('login_cadastro_display_none')
+
+    modal.classList.remove('height_to_login')
+    modal.classList.add('height_to_cadastro')
+    
+    tela_login.style.marginLeft = "-397px";
+    modal.style.height = "610px";
+
 }
 
 function login() {
@@ -13,7 +38,14 @@ function login() {
     var passwordVar = input_login_password.value;
 
     if (emailVar == "" || passwordVar == "") {
-        alert("Todos os campos precisam ser preenchidos")
+        Swal.fire({
+            position: 'top',
+            icon: 'warning',
+            iconColor: '#9B1F1F',
+            title: 'Preencha todos os campos',
+            confirmButtonColor: '#9B1F1F',
+            background: '#252525', 
+          })
         return false;
     }
 
@@ -30,10 +62,19 @@ function login() {
             passwordServer: passwordVar
         })
     }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO login()!")
 
         if (resposta.ok) {
             console.log(resposta);
+
+            Swal.fire({
+                position: 'top',
+                icon: 'success',
+                iconColor: '#FFBC42',
+                title: 'Login realizado !!',
+                showConfirmButton: false,
+                timer: 1300,
+                background: '#252525', 
+              })
 
             resposta.json().then(json => {
                 console.log(json);
@@ -43,15 +84,21 @@ function login() {
                 sessionStorage.NOME_USUARIO = json.nome;
 
                 setTimeout(function () {
-                    alert("Login realizado !!")
                     modal_background.style.display = "none";;
-                }, 1000); // apenas para exibir o loading
+                }, 1300); // apenas para exibir o loading
 
             });
 
         } else {
-
-            alert(`Houve um erro ao realizar o login! \n Erro: ${resposta}`)
+            Swal.fire({
+                position: 'top',
+                icon: 'error',
+                iconColor: '#9B1F1F',
+                title: 'Houve um erro ao realizar o login!',
+                text: `Erro: ${resposta}`,
+                confirmButtonColor: '#FFBC42',
+                background: '#252525', 
+              })
             limpar_credenciais()
             resposta.text().then(texto => {
             });
@@ -64,10 +111,6 @@ function login() {
     return false;
 }
 
-function modal_to_cadastro() {
-    tela_login.style.marginLeft = "-397px";
-    modal.style.height = "660px";
-}
 function cadastrar() {
 
     //Recupere o valor da nova input pelo nome do id
@@ -77,8 +120,14 @@ function cadastrar() {
     var passwordVar = input_cadastro_password.value;
 
     if (nameVar == "" || emailVar == "" || passwordVar == "") {
-        alert("Todos os campos devem ser preenchidos");
-
+        Swal.fire({
+            position: 'top',
+            icon: 'warning',
+            iconColor: '#9B1F1F',
+            title: 'Preencha todos os campos',
+            confirmButtonColor: '#9B1F1F',
+            background: '#252525', 
+          })
         return false;
     }
 
@@ -89,8 +138,6 @@ function cadastrar() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
             nameServer: nameVar,
             emailServer: emailVar,
             passwordServer: passwordVar,
@@ -100,19 +147,35 @@ function cadastrar() {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            alert("Cadastro realizado !!")
+            Swal.fire({
+                position: 'top',
+                icon: 'success',
+                iconColor: '#FFBC42',
+                title: 'Cadastro realizado !!',
+                showConfirmButton: false,
+                timer: 1300,
+                background: '#252525', 
+              })
+              
             modal_background.style.display = "none";
 
             sessionStorage.EMAIL_USUARIO = json.email;
             sessionStorage.NOME_USUARIO = json.nome;
 
         } else {
-            throw ("Houve um erro ao tentar realizar o cadastro!");
+            Swal.fire({
+                position: 'top',
+                icon: 'error',
+                iconColor: '#9B1F1F',
+                title: 'Houve um erro ao realizar o cadastro!',
+                text: `Erro: ${resposta}`,
+                confirmButtonColor: '#FFBC42',
+                background: '#252525', 
+              })
         }
     }).catch(function (resposta) {
-        alert(`Houve um erro ao tentar realizar o cadastro \n Erro: ${resposta}`)
-        limpar_credenciais()
-        console.log(`#ERRO: ${resposta}`);
+ 
+
     });
 
     return false;

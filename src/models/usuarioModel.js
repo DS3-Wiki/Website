@@ -10,20 +10,24 @@ function login(email, password) {
     return database.executar(instrucao);
 }
 
-function verificacao(name, email) {
+function verificacao_name(name) {
     var instrucao = `
         SELECT * FROM usuario 
-            WHERE nome = '${name}' or email = '${email}';
+            WHERE nome = '${name}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
-
-    if(database.executar(instrucao)){
-        return alert("Já existe um usuário mesmo nome ou email que você, Por favor tente outro")
-    }
-    else{
-        cadastrar(name, email, password)
-    };
+    return database.executar(instrucao)
 }
+
+function verificacao_email(email) {
+    var instrucao = `
+        SELECT * FROM usuario 
+            WHERE email = '${email}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao)
+}
+
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrar(name, email, password) {
@@ -43,4 +47,6 @@ function cadastrar(name, email, password) {
 module.exports = {
     login,
     cadastrar,
+    verificacao_email,
+    verificacao_name
 };

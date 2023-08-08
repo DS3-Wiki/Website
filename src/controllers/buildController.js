@@ -28,10 +28,11 @@ function build_inserir(req, res) {
     var intelligence = req.body.intelligenceServer;
     var faith = req.body.faithServer;
     var luck = req.body.luckServer;
+    var id_item = req.body.id_itemServer;
 
     console.log(`As builds estão sendo inseridas`);
 
-    buildModel.build_inserir(name , strength, dexterity, intelligence, faith, luck).then(function (resultado) {
+    buildModel.build_inserir(name , strength, dexterity, intelligence, faith, luck, id_item).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -53,7 +54,7 @@ function item_todos(req, res) {
         console.log(error);
         res.status(500).json(error.sqlMessage);
       });
-    }
+}
 
 function item_por_encantamento(req, res) {
 
